@@ -1,0 +1,103 @@
+---
+/* 🎛️ COGNITIVE SOUND & CRT GRAPHICS RUNTIME OVERLAY MATRIX */
+---
+<div class="max-w-3xl mx-auto flex flex-wrap gap-4 justify-end text-[11px] font-mono text-white/40 px-2">
+  <!-- CRT Monitor Toggle Trigger Link -->
+  <button id="crt-toggle-node" class="hover:text-[var(--color-accent)] transition-colors border border-white/10 rounded px-2 py-1 bg-black/20 select-none">
+    🖥️ DISPLAY: <span class="font-bold text-[var(--color-accent)]" id="crt-status-lbl">ON</span>
+  </button>
+
+  <!-- Audio Feedback Layer Toggle Trigger Link -->
+  <button id="audio-toggle-node" class="hover:text-[var(--color-highlight)] transition-colors border border-white/10 rounded px-2 py-1 bg-black/20 select-none">
+    🔊 TELEMETRY AUDIO: <span class="font-bold text-white/30" id="audio-status-lbl">OFF</span>
+  </button>
+</div>
+
+<!-- Raw CRT Screen Filter Injection Canvas Wrapper Elements -->
+<div id="crt-screen-filter" class="pointer-events-none fixed inset-0 z-50 crt-active-overlay"></div>
+
+<script>
+  let audioActive = false;
+  let audioCtx: AudioContext | null = null;
+
+  // 🧬 Synthetic Audio Generator Subroutine Engine
+  function playSynthSound(type: 'click' | 'success' | 'sweep') {
+    if (!audioActive) return;
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      const now = audioCtx.currentTime;
+
+      if (type === 'click') {
+        // High frequency short mechanical transient clip
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(1200, now);
+        osc.frequency.exponentialRampToValueAtTime(300, now + 0.04);
+        gain.gain.setValueAtTime(0.04, now);
+        gain.gain.linearRampToValueAtTime(0, now + 0.04);
+        osc.start(now);
+        osc.stop(now + 0.04);
+      } else if (type === 'success') {
+        // High tech electronic diagnostic dual confirmation chirp
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(800, now);
+        osc.frequency.setValueAtTime(1000, now + 0.06);
+        gain.gain.setValueAtTime(0.03, now);
+        gain.gain.linearRampToValueAtTime(0, now + 0.15);
+        osc.start(now);
+        osc.stop(now + 0.15);
+      }
+    } catch (e) {
+      console.warn("Audio Context subsystem allocation suspended:", e);
+    }
+  }
+
+  // Bind synth engine globally so inner page components can fire audio queries
+  (window as any).playSystemSound = playSynthSound;
+
+  // Setup Interaction Listeners
+  const crtBtn = document.getElementById('crt-toggle-node');
+  const crtOverlay = document.getElementById('crt-screen-filter');
+  const crtLbl = document.getElementById('crt-status-lbl');
+
+  const audioBtn = document.getElementById('audio-toggle-node');
+  const audioLbl = document.getElementById('audio-status-lbl');
+
+  // CRT Activation Logic Toggle
+  if (crtBtn && crtOverlay && crtLbl) {
+    crtBtn.addEventListener('click', () => {
+      playSynthSound('click');
+      const isActive = crtOverlay.classList.toggle('crt-active-overlay');
+      crtLbl.textContent = isActive ? "ON" : "OFF";
+      crtLbl.style.color = isActive ? "var(--color-accent)" : "rgba(255,255,255,0.3)";
+    });
+  }
+
+  // Audio Activation Logic Toggle
+  if (audioBtn && audioLbl) {
+    audioBtn.addEventListener('click', () => {
+      audioActive = !audioActive;
+      audioLbl.textContent = audioActive ? "ONLINE" : "OFF";
+      audioLbl.style.color = audioActive ? "var(--color-highlight)" : "rgba(255,255,255,0.3)";
+      if (audioActive) playSynthSound('success');
+    });
+  }
+
+  // Attach mechanical keyboard click triggers to tab navigation array inputs
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target && (target.classList.contains('tab-trigger') || target.tagName === 'BUTTON')) {
+      playSynthSound('click');
+    }
+  });
+</script>

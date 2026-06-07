@@ -1,0 +1,112 @@
+---
+/* 🌐 REST API SANDBOX TESTBED COMPONENT */
+---
+<div class="bg-black/30 border border-white/10 rounded p-4 font-mono mt-6">
+  <div class="text-xs text-white/40 uppercase tracking-widest mb-3 border-b border-white/10 pb-1 flex justify-between">
+    <span>🌐 REST ENGINE TELEMETRY SANDBOX</span>
+    <span class="text-[var(--color-accent)]">[REST-ASSURED v5.4.0]</span>
+  </div>
+
+  <!-- Request Controller Panel -->
+  <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 mb-4">
+    <div class="sm:col-span-2">
+      <select id="api-method" class="w-full bg-black/60 border border-white/20 text-xs py-2 px-1.5 rounded text-[var(--color-highlight)] font-bold focus:outline-none focus:border-[var(--color-accent)]">
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+      </select>
+    </div>
+    <div class="sm:col-span-7">
+      <select id="api-endpoint" class="w-full bg-black/60 border border-white/20 text-xs py-2 px-2 rounded text-white/80 focus:outline-none focus:border-[var(--color-accent)]">
+        <option value="status">/api/v1/nerv/mainframe/status</option>
+        <option value="frameworks">/api/v1/automation/suites/deployed</option>
+        <option value="sync">/api/v1/pilot/sync-telemetry/active</option>
+      </select>
+    </div>
+    <div class="sm:col-span-3">
+      <button id="api-send-btn" class="w-full text-xs py-2 px-3 bg-transparent border border-[var(--color-accent)] text-[var(--color-accent)] rounded hover:bg-[var(--color-accent)] hover:text-black transition-all duration-200 uppercase tracking-wider font-bold">
+        [ SEND REQ ]
+      </button>
+    </div>
+  </div>
+
+  <!-- Output Monitor Pane -->
+  <div class="bg-black/80 rounded border border-black p-3 relative min-h-[160px]">
+    <div class="absolute top-2 right-3 text-[10px] text-white/20 font-bold" id="api-runtime-badge">HTTP/1.1 STATUS: IDLE</div>
+    <pre id="api-json-viewer" class="text-xs text-white/50 overflow-x-auto whitespace-pre-wrap font-mono pt-4 leading-relaxed">// Awaiting network request broadcast authorization...</pre>
+  </div>
+</div>
+
+<script>
+  // Mock Response Database Map
+  const responses: Record<string, Record<string, any>> = {
+    status: {
+      status: 200,
+      verdict: "COMPLIant",
+      node: "MAGI_BALTHASAR_02",
+      payload: {
+        system_integrity: "100%",
+        active_firewalls: ["AT_FIELD_PERIMETER", "REST_PROTOCOL_SHIELD"],
+        database_latency: "4.2ms"
+      }
+    },
+    frameworks: {
+      status: 200,
+      total_suites: 4,
+      environment: "PRODUCTION_BANK_GRID",
+      manifest: {
+        backend_assert: "Java Development Kit + RestAssured Core",
+        execution_drivers: ["JUnit5", "TestNG Engine Manager"],
+        ui_validation: "Selenium WebDriver Grid Interface",
+        data_mapping: "Advanced Teradata SQL Pipeline"
+      }
+    },
+    sync: {
+      status: 201,
+      event: "SYNCHRONIZATION_STREAM_ESTABLISHED",
+      telemetry: {
+        eva_unit_01: { pilot: "IK", sync_ratio: "95.4%", status: "STABLE" },
+        eva_unit_02: { pilot: "AS", sync_ratio: "88.1%", status: "OPERATIONAL" }
+      }
+    }
+  };
+
+  const sendBtn = document.getElementById('api-send-btn') as HTMLButtonElement | null;
+  const endpointSel = document.getElementById('api-endpoint') as HTMLSelectElement | null;
+  const jsonViewer = document.getElementById('api-json-viewer');
+  const runtimeBadge = document.getElementById('api-runtime-badge');
+
+  if (sendBtn && endpointSel && jsonViewer && runtimeBadge) {
+    sendBtn.addEventListener('click', () => {
+      // Trigger synthesized network confirmation chirp if available
+      if (window.hasOwnProperty('playSystemSound')) {
+        (window as any).playSystemSound('click');
+      }
+
+      const selectedKey = endpointSel.value;
+      const data = responses[selectedKey] || { error: "Resource Not Found", status: 404 };
+
+      // Initialize loading frame state
+      sendBtn.disabled = true;
+      sendBtn.textContent = "[ LINKING ]";
+      runtimeBadge.textContent = "HTTP/1.1 STATUS: 100 CONTINUE";
+      runtimeBadge.style.color = "var(--color-highlight)";
+      jsonViewer.textContent = "Connecting to remote deployment gateway proxy server...";
+
+      setTimeout(() => {
+        // Output formatted JSON data string
+        jsonViewer.textContent = JSON.stringify(data, null, 2);
+        jsonViewer.style.color = "var(--color-accent)";
+        
+        runtimeBadge.textContent = `HTTP/1.1 STATUS: ${data.status} OK`;
+        runtimeBadge.style.color = "var(--color-accent)";
+        
+        sendBtn.disabled = false;
+        sendBtn.textContent = "[ SEND REQ ]";
+
+        if (window.hasOwnProperty('playSystemSound')) {
+          (window as any).playSystemSound('success');
+        }
+      }, 700);
+    });
+  }
+</script>

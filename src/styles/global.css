@@ -4,13 +4,15 @@
    🧬 NERV ENGINE MULTI-THEMED ATTRIBUTE CORE 
    ========================================================================== */
 
-:root, [data-theme="eva-01"] {
+/* 2. EVA-01 INITIAL PROTOCOL MODE */
+:root[data-theme="eva01"] {
   --color-bg: #090514;
-  --color-card: #130B24;
-  --color-accent: #39FF14;        /* Acid Green */
-  --color-highlight: #FF6B00;     /* Warning Orange */
-  --color-subtext: #A78BFA;       /* Light Purple */
-  --glow-shadow: rgba(57, 255, 20, 0.4);
+  --color-accent: #b5179e;
+  --color-highlight: #72efdd;
+  --color-subtext: #70e000;
+  --glow-shadow: rgba(181, 23, 158, 0.25);
+  /* Mount image_3b90fd.jpg */
+  --bg-wallpaper: url('/wallpapers/eva01.jpg');
 }
 
 [data-theme="eva-00"] {
@@ -22,22 +24,43 @@
   --glow-shadow: rgba(255, 184, 0, 0.4);
 }
 
-[data-theme="eva-02"] {
-  --color-bg: #140303;
-  --color-card: #240A0A;
-  --color-accent: #FF1E27;        /* Burning Crimson Armor */
-  --color-highlight: #FF9900;     /* Imperial Yellow */
-  --color-subtext: #FCA5A5;       /* Warning Red Muted */
-  --glow-shadow: rgba(255, 30, 39, 0.4);
+/* 3. EVA-02 ASUKA BERSERK MODE */
+:root[data-theme="eva02"] {
+  --color-bg: #140202;
+  --color-accent: #ff002b;
+  --color-highlight: #ffb703;
+  --color-subtext: #ba181b;
+  --glow-shadow: rgba(255, 0, 43, 0.25);
+  /* Mount image_3b9083.jpg */
+  --bg-wallpaper: url('/wallpapers/eva02.jpg');
 }
 
-[data-theme="nerv"] {
-  --color-bg: #111111;
-  --color-card: #1C1C1C;
-  --color-accent: #E50000;        /* Alert Red Phase Line */
-  --color-highlight: #FF5500;     /* Critical Geo-Front Orange */
-  --color-subtext: #D1D1D6;       /* Strategic Graphite */
-  --glow-shadow: rgba(229, 0, 0, 0.4);
+/* 1. NERV HEADQUARTERS DEFAULT MODE */
+:root, :root[data-theme="nerv"] {
+  --color-bg: #080808;
+  --color-accent: #e63946;
+  --color-highlight: #ffb703;
+  --color-subtext: #8d99ae;
+  --glow-shadow: rgba(230, 57, 70, 0.25);
+  /* Mount image_3b90a6.jpg */
+  --bg-wallpaper: url('/wallpapers/nerv.jpg');
+}
+
+/* ==========================================================================
+   🖼️ MASTER DISPLAY CANVAS ROUTINES
+   ========================================================================== */
+body {
+  background-color: var(--color-bg);
+  /* Linear-gradient overlay applies an 88% dark shield to preserve high text contrast */
+  background-image: 
+    linear-gradient(rgba(10, 10, 12, 0.88), rgba(10, 10, 12, 0.88)), 
+    var(--bg-wallpaper);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #f8f9fa;
+  transition: background-color 0.5s ease, background-image 0.5s ease, border-color 0.3s ease;
 }
 
 /* ==========================================================================
@@ -202,4 +225,29 @@ pre, code, [class*="terminal"], .bg-eva-card {
   color: #111111 !important;
   box-shadow: 0 0 12px rgba(229, 0, 0, 0.6);
   border-color: #E50000 !important;
+}
+
+/* ==========================================================================
+   📺 RETRO CRT MAIN MONITOR SCREEN SIMULATION STYLES
+   ========================================================================== */
+.crt-active-overlay {
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 4px, 6px 100%;
+  animation: crtMonitorFlicker 0.15s infinite;
+}
+
+@keyframes crtMonitorFlicker {
+  0% { opacity: 0.985; }
+  50% { opacity: 1; }
+  100% { opacity: 0.99; }
+}
+
+/* Force modern animations to cleanly inherit staggered drop sequences smoothly */
+.animate-fade-in {
+  animation: logLinePrint 0.2s ease-out forwards;
+}
+
+@keyframes logLinePrint {
+  from { opacity: 0; transform: translateX(-4px); }
+  to { opacity: 1; transform: translateX(0); }
 }

@@ -6,13 +6,19 @@ import About from '../components/About.astro';
 import Experience from '../components/Experience.astro';
 import Skills from '../components/Skills.astro';
 import Connect from '../components/Connect.astro';
-import MagiSystem from '../components/MagiSystem.astro'; // 🔌 Injected
+import MagiSystem from '../components/MagiSystem.astro';
+import ApiSandbox from '../components/ApiSandbox.astro';       // 🔌 Injected
+import ThreatTracker from '../components/ThreatTracker.astro'; // 🔌 Injected
+import EffectsController from '../components/EffectsController.astro'; // 🔌 Injected
 ---
 
 <Layout title="Igal Kroif | QA Engineer">
-  <main class="max-w-4xl mx-auto px-6 py-6 space-y-8 clear-both">
+  <main class="max-w-4xl mx-auto px-6 py-6 space-y-8 clear-both relative">
     
-    <!-- 🎛️ SYSTEM THEME SHIFT CONTROLLER LAYER -->
+    <!-- 🎛️ ENVIRONMENTAL ENGINE MEDIA OVERLAYS -->
+    <EffectsController />
+
+    <!-- SYSTEM THEME SHIFT CONTROLLER LAYER -->
     <ThemeSwitcher />
 
     <!-- Boot Terminal Diagnostics Section -->
@@ -40,14 +46,17 @@ import MagiSystem from '../components/MagiSystem.astro'; // 🔌 Injected
     <div class="max-w-4xl mx-auto">
       <div id="about-pane" class="tab-content active">
         <About />
-        <!-- Injection of the Supercomputer Array inside the default active module -->
         <MagiSystem />
       </div>
       <div id="experience-pane" class="tab-content">
         <Experience />
+        <!-- Appends the containment tracker logs directly into the work archive -->
+        <ThreatTracker />
       </div>
       <div id="skills-pane" class="tab-content">
         <Skills />
+        <!-- Appends the API sandbox console client directly into engineering tools -->
+        <ApiSandbox />
       </div>
       <div id="connect-pane" class="tab-content">
         <Connect />
@@ -62,9 +71,9 @@ import MagiSystem from '../components/MagiSystem.astro'; // 🔌 Injected
 
   // 🧬 Centralized Terminal Stagger Engine
   function applyTerminalStream(container: HTMLElement) {
-    const printableLines = container.querySelectorAll('h2, h3, p, li, .bg-eva-card, .magi-node');
+    const printableLines = container.querySelectorAll('h2, h3, p, li, .bg-eva-card, .magi-node, option');
     printableLines.forEach((line, index) => {
-      (line as HTMLElement).style.animationDelay = `${index * 0.06}s`;
+      (line as HTMLElement).style.animationDelay = `${index * 0.05}s`;
     });
   }
 
@@ -86,7 +95,7 @@ import MagiSystem from '../components/MagiSystem.astro'; // 🔌 Injected
       triggers.forEach(t => t.classList.remove('active'));
       contents.forEach(c => {
         c.classList.remove('active');
-        const oldLines = c.querySelectorAll('h2, h3, p, li, .bg-eva-card, .magi-node');
+        const oldLines = c.querySelectorAll('h2, h3, p, li, .bg-eva-card, .magi-node, option');
         oldLines.forEach(line => (line as HTMLElement).style.removeProperty('animation-delay'));
       });
 

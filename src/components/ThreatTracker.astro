@@ -1,0 +1,49 @@
+---
+/* 🚨 NERV THREAT CONTAINMENT LOG MATRIX */
+const anomalies = [
+  {
+    id: "CODE-03-SACHIEL",
+    title: "REGRESSION DEFECT: API BREAKAGE EXPLOIT",
+    severity: "CRITICAL THREAT LEVEL",
+    framework: "RestAssured + JUnit Assert Suite",
+    resolution: "Intercepted unauthorized structural schema mutations across transaction endpoints by compiling a automated strict contract mapping validation framework."
+  },
+  {
+    id: "CODE-05-RAMIEL",
+    title: "UI SYNCHRONIZATION LAGGING ANOMALY",
+    severity: "HIGH RISK ANOMALY",
+    framework: "Selenium WebDriver + Custom Explicit Conditions",
+    resolution: "Neutralized asynchronous thread dynamic race conditions triggering sporadic render failures under heavy server loads by optimizing browser layer element tracking routines."
+  }
+];
+---
+
+<div class="space-y-4 font-mono mt-8">
+  <div class="border-b border-white/10 pb-2">
+    <h3 class="text-xs text-[var(--color-highlight)] font-bold tracking-widest uppercase">
+      🚨 SYSTEM RISK ASSESSMENT & BUG MITIGATION MATRIX
+    </h3>
+  </div>
+
+  <div class="space-y-4">
+    {anomalies.map((bug) => (
+      <div class="bg-black/40 border border-red-500/20 rounded p-4 relative overflow-hidden group hover:border-red-500/40 transition-all duration-300">
+        <!-- Structural Background Overlay Element -->
+        <div class="absolute top-0 right-0 bg-red-950/40 text-red-400 text-[9px] px-2 py-0.5 border-l border-b border-red-500/20 font-bold tracking-tighter">
+          {bug.severity}
+        </div>
+
+        <div class="text-xs text-red-500/70 font-bold mb-1">{bug.id}</div>
+        <h4 class="text-sm font-bold text-white tracking-wide mb-2 uppercase">{bug.title}</h4>
+        
+        <div class="text-xs text-white/80 space-y-1.5">
+          <p><span class="text-[var(--color-subtext)] font-semibold">CONTAINMENT METHOD:</span> <code class="text-[var(--color-accent)] bg-black/50 px-1 py-0.5 rounded text-[11px]">{bug.framework}</code></p>
+          <p class="text-white/60 leading-relaxed"><span class="text-[var(--color-subtext)] font-semibold">RESOLUTION SUMMARY:</span> {bug.resolution}</p>
+        </div>
+
+        <!-- Decorative Warning Accent Ribbon Line -->
+        <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-red-600/0 via-red-500/20 to-red-600/0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+      </div>
+    ))}
+  </div>
+</div>

@@ -1,9 +1,9 @@
 ---
 const themes = [
-  { id: "eva-01", name: "EVA-01", color: "border-[#39FF14] text-[#39FF14]" },
-  { id: "eva-00", name: "EVA-00", color: "border-[#FFB800] text-[#FFB800]" },
-  { id: "eva-02", name: "EVA-02", color: "border-[#FF1E27] text-[#FF1E27]" },
-  { id: "nerv", name: "NERV HQ", color: "border-[#E50000] text-[#E50000]" }
+  { id: "eva-01", name: "EVA-01", color: "border-[#39FF14]/40 text-[#39FF14] hover:border-[#39FF14]" },
+  { id: "eva-00", name: "EVA-00", color: "border-[#FFB800]/40 text-[#FFB800] hover:border-[#FFB800]" },
+  { id: "eva-02", name: "EVA-02", color: "border-[#FF1E27]/40 text-[#FF1E27] hover:border-[#FF1E27]" },
+  { id: "nerv", name: "NERV HQ", color: "border-[#E50000]/40 text-[#E50000] hover:border-[#E50000]" }
 ];
 ---
 
@@ -20,9 +20,8 @@ const themes = [
 </div>
 
 <script>
+  // Your existing local storage initialization logic remains intact here!
   const buttons = document.querySelectorAll('.theme-selector');
-
-  // Load configuration value if saved in baseline registry cache
   const activeTheme = localStorage.getItem('nerv-user-theme') || 'eva-01';
   document.documentElement.setAttribute('data-theme', activeTheme);
 
@@ -30,7 +29,6 @@ const themes = [
     button.addEventListener('click', () => {
       const targetTheme = button.getAttribute('data-theme-id');
       if (targetTheme) {
-        // Shift global structural variables immediately
         document.documentElement.setAttribute('data-theme', targetTheme);
         localStorage.setItem('nerv-user-theme', targetTheme);
       }

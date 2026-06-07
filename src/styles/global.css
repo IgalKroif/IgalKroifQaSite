@@ -115,3 +115,57 @@ pre, code, [class*="terminal"], .bg-eva-card {
   text-shadow: 0 0 8px rgba(255, 85, 0, 0.3);
   animation: pulse 3s infinite alternate;
 }
+/* ==========================================================================
+   🎯 INTERACTIVE LAYER COMPONENT ROUTING (FIXES SINGLE PAGE STACKING)
+   ========================================================================== */
+
+/* Hide all inactive tab panes by default */
+.tab-content {
+  display: none !important;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* Reveal the active synchronized tab pane */
+.tab-content.active {
+  display: block !important;
+  opacity: 1 !important;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   🎨 THEME SWITCHER DYNAMIC ACTIVE HIGHLIGHTS (FIXES BUTTON COLOR MISMATCH)
+   ========================================================================== */
+
+/* When EVA-01 Profile is Active */
+[data-theme="eva-01"] [data-theme-id="eva-01"] {
+  background-color: #39FF14 !important;
+  color: #090514 !important;
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.6);
+  border-color: #39FF14 !important;
+}
+
+/* When EVA-00 Profile is Active */
+[data-theme="eva-00"] [data-theme-id="eva-00"] {
+  background-color: #FFB800 !important;
+  color: #050B14 !important;
+  box-shadow: 0 0 12px rgba(255, 184, 0, 0.6);
+  border-color: #FFB800 !important;
+}
+
+/* When EVA-02 Profile is Active */
+[data-theme="eva-02"] [data-theme-id="eva-02"] {
+  background-color: #FF1E27 !important;
+  color: #140303 !important;
+  box-shadow: 0 0 12px rgba(255, 30, 39, 0.6);
+  border-color: #FF1E27 !important;
+}
+
+/* When NERV Strategic Mode is Active */
+[data-theme="nerv"] [data-theme-id="nerv"] {
+  background-color: #E50000 !important;
+  color: #111111 !important;
+  box-shadow: 0 0 12px rgba(229, 0, 0, 0.6);
+  border-color: #E50000 !important;
+}

@@ -15,7 +15,7 @@ import Connect from '../components/Connect.astro';
     <ThemeSwitcher />
 
     <!-- Boot Terminal Diagnostics Section -->
-    <Hero />
+    <Hero/>
 
 <!-- 📊 NERV INTERFACE TAB MATRIX CONTROL RAIL -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 max-w-3xl mx-auto font-mono text-center">
@@ -58,28 +58,45 @@ import Connect from '../components/Connect.astro';
   const triggers = document.querySelectorAll('.tab-trigger');
   const contents = document.querySelectorAll('.tab-content');
 
+  // 🧬 Centralized Terminal Stagger Engine
+  function applyTerminalStream(container: HTMLElement) {
+    const printableLines = container.querySelectorAll('h2, h3, p, li, .bg-eva-card');
+    printableLines.forEach((line, index) => {
+      // Adjust multiplier (0.08s) to tune the text-drop speed
+      (line as HTMLElement).style.animationDelay = `${index * 0.08}s`;
+    });
+  }
+
+  // 🚀 System Boot Execution: Stream default active panel on page load
+  const initialActivePanel = document.querySelector('.tab-content.active');
+  if (initialActivePanel) {
+    applyTerminalStream(initialActivePanel as HTMLElement);
+  }
+
+  // 🎛️ Interactive Tab Listener Matrix
   triggers.forEach(trigger => {
     trigger.addEventListener('click', () => {
-      if (!trigger.hasAttribute('data-target')) return;
+      // 1. Resolve target identification
+      const targetId = trigger.getAttribute('data-target');
+      if (!targetId) return;
 
+      const targetContent = document.getElementById(targetId);
+      if (!targetContent) return;
+
+      // 2. Clear out legacy active flags and old animation states
       triggers.forEach(t => t.classList.remove('active'));
       contents.forEach(c => {
         c.classList.remove('active');
-        // Force an execution loop reflow to reset terminal print animations
-        (c as HTMLElement).style.animation = 'none';
-        void (c as HTMLElement).offsetHeight; 
-        (c as HTMLElement).style.animation = '';
+        const oldLines = c.querySelectorAll('h2, h3, p, li, .bg-eva-card');
+        oldLines.forEach(line => (line as HTMLElement).style.removeProperty('animation-delay'));
       });
 
+      // 3. Commit active state to selected layers
       trigger.classList.add('active');
-      const targetId = trigger.getAttribute('data-target');
-      
-      if (targetId) {
-        const targetContent = document.getElementById(targetId);
-        if (targetContent) {
-          targetContent.classList.add('active');
-        }
-      }
+      targetContent.classList.add('active');
+
+      // 4. Run stream sequence on fresh layout mount
+      applyTerminalStream(targetContent);
     });
   });
 </script>

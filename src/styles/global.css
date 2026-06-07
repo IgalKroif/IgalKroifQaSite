@@ -140,33 +140,26 @@ pre, code, [class*="terminal"], .bg-eva-card {
    ⚡ INTERACTIVE LAYER ROUTING & TERMINAL REVEAL ENGINE
    ========================================================================== */
 
-/* Consolidated: Inactive tab routing baseline */
+/* Core visibility management for standard tab structures */
 .tab-content {
   display: none !important;
   opacity: 0;
 }
 
-/* Consolidated: Active synchronized tab layer routing */
 .tab-content.active {
   display: block !important;
   opacity: 1 !important;
 }
 
-/* Cascading typewriter streaming effect across inner children contents */
+/* Base structural targets are hidden until their specific animation index triggers */
+.tab-content.active h2,
+.tab-content.active h3,
 .tab-content.active p, 
 .tab-content.active li,
-.tab-content.active h2,
 .tab-content.active .bg-eva-card {
-  animation: terminalDataPrint 0.4s cubic-bezier(0.11, 0, 0.5, 0) both;
+  opacity: 0;
+  animation: terminalDataPrint 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
-
-/* Cascade layout print delay metrics */
-.tab-content.active h2 { animation-delay: 0.05s; }
-.tab-content.active p:nth-of-type(1) { animation-delay: 0.1s; }
-.tab-content.active p:nth-of-type(2) { animation-delay: 0.18s; }
-.tab-content.active p:nth-of-type(3) { animation-delay: 0.25s; }
-.tab-content.active li { animation-delay: 0.2s; }
-.tab-content.active .bg-eva-card { animation-delay: 0.15s; }
 
 @keyframes terminalDataPrint {
   from {

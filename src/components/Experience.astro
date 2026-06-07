@@ -1,34 +1,52 @@
 ---
 const timeline = [
   {
-    year: "2022",
-    role: "QA Engineer – Bank A",
-    description:
-      "Implemented Selenium test suite for core banking platform, reducing regression testing time by 40%."
+    role: "QA Engineer",
+    company: "Tesnet Group Ltd",
+    type: "Full-time",
+    location: "Tel Aviv District, Israel (Hybrid)",
+    period: "May 2023 – Present",
+    current: true,
+    bullets: [
+      "Driving test automation implementation across core operational environments.",
+      "Utilizing Python for core logic automation testing frameworks, test scripting, and script execution.",
+      "Leading regression cycles, structural test designs, and technical training initiatives for engineering staff."
+    ]
   },
   {
-    year: "2023",
-    role: "Senior QA Engineer – Bank B",
-    description:
-      "Led automation effort for API testing with Postman and integrated CI/CD pipelines using Jenkins."
-  },
-  {
-    year: "2024",
-    role: "Lead QA Engineer – Bank C",
-    description:
-      "Designed end‑to‑end testing framework in Java & Python, introduced performance testing, and mentored junior QA staff."
+    role: "QA Engineer",
+    company: "Qualitest",
+    type: "Full-time",
+    location: "Tel Aviv District, Israel",
+    period: "Feb 2022 – May 2023",
+    current: false,
+    bullets: [
+      "Executed database and application validation layers utilizing Teradata SQL data mapping models.",
+      "Authored functional, regression, and integration test specifications for complex backend platforms.",
+      "Identified software defects, validated fixes, and ensured high product quality under aggressive delivery cycles."
+    ]
   }
 ];
 ---
-<section id="experience" class="py-20 px-4 max-w-4xl mx-auto">
-  <h2 class="text-3xl font-bold mb-6 border-b border-neon pb-2">Experience</h2>
-  <ul class="space-y-6">
+<section class="my-8">
+  <h2>Experience</h2>
+  <div class="mt-6 space-y-8">
     {timeline.map((item) => (
-      <li class="border-l-2 border-neon pl-4">
-        <span class="text-neon font-mono">{item.year}</span>
-        <h3 class="text-xl font-semibold">{item.role}</h3>
-        <p>{item.description}</p>
-      </li>
+      <div class={`border-l-2 pl-4 ${item.current ? 'border-eva1-purple' : 'border-eva-muted'}`}>
+        <div class="flex justify-between items-baseline flex-wrap">
+          <h3 class="text-xl font-bold text-eva-white">{item.role}</h3>
+          <span class={`text-sm ${item.current ? 'text-eva-orange' : 'text-eva-muted'}`}>{item.period}</span>
+        </div>
+        <p class={`${item.current ? 'text-eva1-purple-glow' : 'text-eva-muted'} font-medium`}>
+          {item.company} • {item.type}
+        </p>
+        <p class="text-sm text-eva-muted mb-2">{item.location}</p>
+        <ul class="list-disc list-inside space-y-1 text-sm">
+          {item.bullets.map((bullet) => (
+            <li>{bullet}</li>
+          ))}
+        </ul>
+      </div>
     ))}
-  </ul>
+  </div>
 </section>

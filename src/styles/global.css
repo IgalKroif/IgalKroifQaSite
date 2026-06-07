@@ -1,49 +1,44 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   🧬 NERV ENGINE MULTI-THEMED ATTRIBUTE CORE 
+   🧬 UNIVERSAL NERV TACTICAL THEME MATRIX
    ========================================================================== */
 
-/* 2. EVA-01 INITIAL PROTOCOL MODE */
-:root[data-theme="eva01"] {
-  --color-bg: #090514;
-  --color-accent: #b5179e;
-  --color-highlight: #72efdd;
-  --color-subtext: #70e000;
-  --glow-shadow: rgba(181, 23, 158, 0.25);
-  /* Mount image_3b90fd.jpg */
-  --bg-wallpaper: url('/wallpapers/eva01.jpg');
-}
-
-[data-theme="eva-00"] {
-  --color-bg: #050B14;
-  --color-card: #0D1624;
-  --color-accent: #FFB800;        /* Prototype Marigold Amber */
-  --color-highlight: #00D2FF;     /* Jet Shield Blue */
-  --color-subtext: #93C5FD;       /* Technical Frost Blue */
-  --glow-shadow: rgba(255, 184, 0, 0.4);
-}
-
-/* 3. EVA-02 ASUKA BERSERK MODE */
-:root[data-theme="eva02"] {
-  --color-bg: #140202;
-  --color-accent: #ff002b;
-  --color-highlight: #ffb703;
-  --color-subtext: #ba181b;
-  --glow-shadow: rgba(255, 0, 43, 0.25);
-  /* Mount image_3b9083.jpg */
-  --bg-wallpaper: url('/wallpapers/eva02.jpg');
-}
-
 /* 1. NERV HEADQUARTERS DEFAULT MODE */
-:root, :root[data-theme="nerv"] {
+:root, 
+[data-theme="nerv"], 
+.theme-nerv, 
+.nerv {
   --color-bg: #080808;
   --color-accent: #e63946;
   --color-highlight: #ffb703;
   --color-subtext: #8d99ae;
   --glow-shadow: rgba(230, 57, 70, 0.25);
-  /* Mount image_3b90a6.jpg */
   --bg-wallpaper: url('/wallpapers/nerv.jpg');
+}
+
+/* 2. EVA-01 INITIAL PROTOCOL MODE */
+[data-theme="eva01"], 
+.theme-eva01, 
+.eva01 {
+  --color-bg: #090514;
+  --color-accent: #b5179e;
+  --color-highlight: #72efdd;
+  --color-subtext: #70e000;
+  --glow-shadow: rgba(181, 23, 158, 0.25);
+  --bg-wallpaper: url('/wallpapers/eva01.jpg');
+}
+
+/* 3. EVA-02 ASUKA BERSERK MODE */
+[data-theme="eva02"], 
+.theme-eva02, 
+.eva02 {
+  --color-bg: #140202;
+  --color-accent: #ff002b;
+  --color-highlight: #ffb703;
+  --color-subtext: #ba181b;
+  --glow-shadow: rgba(255, 0, 43, 0.25);
+  --bg-wallpaper: url('/wallpapers/eva02.jpg');
 }
 
 /* ==========================================================================
@@ -51,7 +46,6 @@
    ========================================================================== */
 body {
   background-color: var(--color-bg);
-  /* Linear-gradient overlay applies an 88% dark shield to preserve high text contrast */
   background-image: 
     linear-gradient(rgba(10, 10, 12, 0.88), rgba(10, 10, 12, 0.88)), 
     var(--bg-wallpaper);

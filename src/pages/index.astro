@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import Experience from '../components/Experience.astro';
 import Skills from '../components/Skills.astro';
+import Connect from '../components/Connect.astro';
 ---
 
 <Layout title="Igal Kroif | QA Engineer">
@@ -12,19 +13,22 @@ import Skills from '../components/Skills.astro';
     <Hero />
 
     <!-- 📊 NERV INTERFACE TAB MATRIX CONTROL RAIL -->
-    <div class="grid grid-cols-3 gap-2 md:gap-4 max-w-2xl mx-auto font-mono text-center">
-      <button class="tab-trigger active px-4 py-2 text-sm rounded tracking-wider" data-target="about-pane">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 max-w-3xl mx-auto font-mono text-center">
+      <button class="tab-trigger active px-3 py-2 text-xs md:text-sm rounded tracking-wider" data-target="about-pane">
         [ ABOUT ME ]
       </button>
-      <button class="tab-trigger px-4 py-2 text-sm rounded tracking-wider" data-target="experience-pane">
+      <button class="tab-trigger px-3 py-2 text-xs md:text-sm rounded tracking-wider" data-target="experience-pane">
         [ EXPERIENCE ]
       </button>
-      <button class="tab-trigger px-4 py-2 text-sm rounded tracking-wider" data-target="skills-pane">
+      <button class="tab-trigger px-3 py-2 text-xs md:text-sm rounded tracking-wider" data-target="skills-pane">
         [ SKILLSETS ]
+      </button>
+      <button class="tab-trigger px-3 py-2 text-xs md:text-sm rounded tracking-wider" data-target="connect-pane">
+        [ CONNECT ]
       </button>
     </div>
 
-    <hr class="border-t border-eva1-purple/20 max-w-2xl mx-auto my-4" />
+    <hr class="border-t border-eva1-purple/20 max-w-3xl mx-auto my-4" />
 
     <!-- 🛡️ SYNCHRONIZED INTERFACE DISPLAY LAYERS -->
     <div class="max-w-4xl mx-auto">
@@ -37,6 +41,9 @@ import Skills from '../components/Skills.astro';
       <div id="skills-pane" class="tab-content">
         <Skills />
       </div>
+      <div id="connect-pane" class="tab-content">
+        <Connect />
+      </div>
     </div>
   </main>
 </Layout>
@@ -47,6 +54,9 @@ import Skills from '../components/Skills.astro';
 
   triggers.forEach(trigger => {
     trigger.addEventListener('click', () => {
+      // ⚠️ Safeguard: If the click target is a direct action link (like Download CV), bypass tab switching
+      if (!trigger.hasAttribute('data-target')) return;
+
       // Clear active system flags from all selectors
       triggers.forEach(t => t.classList.remove('active'));
       contents.forEach(c => c.classList.remove('active'));

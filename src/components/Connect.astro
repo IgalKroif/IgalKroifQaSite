@@ -1,0 +1,66 @@
+---
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/igal-kroif?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    description: "Professional networking layer, core banking industry updates, and enterprise QA communications.",
+    accent: "text-eva1-green-glow"
+  },
+  {
+    name: "GitHub",
+    url: "https://github.com/IgalKroif",
+    description: "Source code mainframes, custom browser workspace extensions, and RestAssured framework repositories.",
+    accent: "text-eva1-purple-glow"
+  },
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/share/18ZERbeFnV/",
+    description: "Secondary communication channel and casual external network status streams.",
+    accent: "text-eva-muted"
+  }
+];
+---
+<section class="my-8 animate-fadeIn">
+  <h2>Data Channels & Communications</h2>
+  
+  <!-- 🚨 MAGI PROTOCOL: EMERGENCY RESUME DOWNLOAD -->
+  <div class="p-6 rounded bg-eva-card border border-eva-orange/40 shadow-lg mb-8 flex flex-col md:flex-row justify-between items-center gap-6">
+    <div class="space-y-1">
+      <h3 class="text-xl font-bold text-eva-orange uppercase tracking-wider">Tactical Resume / CV Log</h3>
+      <p class="text-sm text-eva-muted">
+        Access comprehensive technical data logs, full manual engineering frameworks, and historical testing configurations.
+      </p>
+    </div>
+    <a 
+      href="/Igal_Kroif_Resume.pdf" 
+      download
+      class="tab-trigger px-6 py-3 rounded font-bold text-center border-eva-orange text-eva-orange hover:!bg-eva-orange hover:!text-[#090514] block w-full md:w-auto tracking-widest whitespace-nowrap transition-all duration-200"
+    >
+      [ DOWNLOAD CV ]
+    </a>
+  </div>
+
+  <!-- 🌐 HIGH-CONTRAST DATA NODE LINKS -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {socialLinks.map((link) => (
+      <a 
+        href={link.url} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="p-4 rounded bg-eva-card border border-eva1-purple/20 block group transition-all duration-300 hover:border-eva1-green hover:shadow-[0_0_15px_rgba(57,255,20,0.15)]"
+      >
+        <div class="flex justify-between items-center mb-2">
+          <h3 class={`text-lg font-bold ${link.accent} group-hover:text-eva1-green transition-colors`}>
+            {link.name}
+          </h3>
+          <span class="text-[10px] font-mono text-eva1-purple group-hover:text-eva1-green tracking-wider transition-colors">
+            // EXT_LINK_
+          </span>
+        </div>
+        <p class="text-sm text-eva-muted leading-relaxed group-hover:text-eva-white transition-colors">
+          {link.description}
+        </p>
+      </a>
+    ))}
+  </div>
+</section>

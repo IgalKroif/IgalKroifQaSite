@@ -1,0 +1,64 @@
+---
+/* 🧠 MAGI SUPERCOMPUTING MATRIX INTERFACE TYPE */
+---
+<div class="max-w-4xl mx-auto p-4 border border-white/5 rounded bg-black/20 font-mono mt-8">
+  <div class="text-xs text-white/30 uppercase tracking-widest mb-3 border-b border-white/5 pb-1 flex justify-between">
+    <span>🧠 NERV CENTRAL COMPUTING SYSTEM ARCHITECTURE</span>
+    <span class="animate-pulse text-[var(--color-highlight)]">[MAGI MULTI-BUS LOGIC LINK]</span>
+  </div>
+  
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+    <!-- MELCHIOR -->
+    <div class="p-4 border border-dashed border-white/10 rounded opacity-30 transition-all duration-700" id="magi-melchior">
+      <div class="text-md font-bold tracking-wider text-white">MELCHIOR-1</div>
+      <div class="text-[10px] mt-0.5 text-[var(--color-subtext)] tracking-widest">LOGICAL ANALYSIS LAYER</div>
+      <div class="magi-status text-xs font-bold mt-3 text-white/20">[ RETRIEVING QUERY ]</div>
+    </div>
+
+    <!-- BALTHASAR -->
+    <div class="p-4 border border-dashed border-white/10 rounded opacity-30 transition-all duration-700" id="magi-balthasar">
+      <div class="text-md font-bold tracking-wider text-white">BALTHASAR-2</div>
+      <div class="text-[10px] mt-0.5 text-[var(--color-subtext)] tracking-widest">SCIENTIFIC PURSUIT LAYER</div>
+      <div class="magi-status text-xs font-bold mt-3 text-white/20">[ RETRIEVING QUERY ]</div>
+    </div>
+
+    <!-- CASPER -->
+    <div class="p-4 border border-dashed border-white/10 rounded opacity-30 transition-all duration-700" id="magi-casper">
+      <div class="text-md font-bold tracking-wider text-white">CASPER-3</div>
+      <div class="text-[10px] mt-0.5 text-[var(--color-subtext)] tracking-widest">ETHICAL RESOLUTION PROFILE</div>
+      <div class="magi-status text-xs font-bold mt-3 text-white/20">[ RETRIEVING QUERY ]</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initializeMagiCluster() {
+    const systems = ['melchior', 'balthasar', 'casper'];
+    
+    systems.forEach((sys, idx) => {
+      setTimeout(() => {
+        const box = document.getElementById(`magi-${sys}`);
+        if (!box) return;
+
+        // Upgrade opacity tracking layers to solid execution bounds
+        box.classList.remove('opacity-30', 'border-dashed');
+        box.classList.add('opacity-100', 'border-solid');
+        box.style.borderColor = 'var(--color-accent)';
+        box.style.boxShadow = '0 0 10px var(--glow-shadow)';
+        
+        const label = box.querySelector('.magi-status');
+        if (label) {
+          label.textContent = '› STATUS CODE 200: APPROVED';
+          (label as HTMLElement).style.color = 'var(--color-accent)';
+        }
+      }, (idx + 1) * 500); // Sequence waterfall delay tracking
+    });
+  }
+
+  // Self assembly monitoring hooks
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeMagiCluster);
+  } else {
+    initializeMagiCluster();
+  }
+</script>

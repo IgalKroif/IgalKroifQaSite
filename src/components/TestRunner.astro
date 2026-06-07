@@ -1,0 +1,92 @@
+---
+/* 🧪 AUTOMATION TEST UTILITY MATRIX WIDGET */
+---
+<div class="bg-black/40 border border-white/10 rounded p-4 font-mono mt-6">
+  <div class="flex justify-between items-center border-b border-white/10 pb-2 mb-3 text-xs tracking-wider">
+    <span class="text-[var(--color-subtext)]">⚙️ AUTOMATION EXECUTION ENGINE v2.0.26</span>
+    <span class="text-white/40">[READY]</span>
+  </div>
+
+  <!-- Control Console Input -->
+  <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between mb-4">
+    <div class="text-sm text-white/80">
+      <span class="text-[var(--color-highlight)]">›</span> Target: <span class="text-[var(--color-accent)]">portfolio_core_audit.spec.js</span>
+    </div>
+    <button 
+      id="run-test-btn"
+      class="px-3 py-1.5 bg-transparent border border-[var(--color-accent)] text-[var(--color-accent)] text-xs rounded hover:bg-[var(--color-accent)] hover:text-black transition-all duration-300 tracking-widest shadow-[0_0_8px_rgba(0,0,0,0.5)] active:scale-95"
+    >
+      [ RUN AUTOMATED SYSTEM AUDIT ]
+    </button>
+  </div>
+
+  <!-- Interactive Display Output Screen -->
+  <div id="test-console-screen" class="bg-black/80 rounded border border-black p-3 h-40 overflow-y-auto text-xs space-y-1 text-white/40 select-none">
+    <div class="text-white/30 italic">// Click execute trigger to run simulated automated suite assertions...</div>
+  </div>
+</div>
+
+<script>
+  const testLogs = [
+    "🚀 Initializing NERV Automation Runner Environment...",
+    "🔍 Mounting Webdriver dependencies & browser context maps...",
+    "🌐 TARGET HOST: HTTP://LOCALHOST:3000 -> RESOLVED",
+    "🧪 ASSERT EXECUTION [1/4]: Testing layout theme matrix injection... [OK]",
+    "🧪 ASSERT EXECUTION [2/4]: Validating RestAssured API data mappings... [OK]",
+    "🧪 ASSERT EXECUTION [3/4]: Testing interactive client side tab routers... [OK]",
+    "🧪 ASSERT EXECUTION [4/4]: Scanning absolute defense parameters...",
+    "🛡️ SYSTEM NOTICE: A.T. Field structural density securely operating at 100%.",
+    "✨ SUMMARY: 4 Passed, 0 Failed, 0 Skipped. VERDICT: SYSTEM OPERATIONAL"
+  ];
+
+  const runBtn = document.getElementById('run-test-btn');
+  const screen = document.getElementById('test-console-screen');
+  let running = false;
+
+  if (runBtn && screen) {
+    runBtn.addEventListener('click', () => {
+      if (running) return;
+      running = true;
+      
+      // Flash button state
+      runBtn.textContent = "[ RUNNING PIPELINE ]";
+      runBtn.style.borderColor = "var(--color-highlight)";
+      runBtn.style.color = "var(--color-highlight)";
+      
+      screen.innerHTML = ""; // Wipe previous outputs
+      let lineIndex = 0;
+
+      function printLine() {
+      // 🛡️ Guard clause to restore type narrowing inside the closure
+      if (!screen || !runBtn) return;
+
+      if (lineIndex < testLogs.length) {
+        const logLine = document.createElement('div');
+        logLine.className = "tracking-wide animate-fade-in";
+        logLine.textContent = testLogs[lineIndex];
+
+        // Highlight positive passes or warnings dynamically
+        if (logLine.textContent.includes('[OK]') || logLine.textContent.includes('OPERATIONAL') || logLine.textContent.includes('100%')) {
+          logLine.style.color = "var(--color-accent)";
+        } else if (logLine.textContent.includes('🚀') || logLine.textContent.includes('🛡️')) {
+          logLine.style.color = "var(--color-highlight)";
+        } else {
+          logLine.style.color = "#F9FAFB";
+        }
+
+        screen.appendChild(logLine);
+        screen.scrollTop = screen.scrollHeight; // Auto scroll tracking
+        lineIndex++;
+        setTimeout(printLine, 350); // Stagger line drop speed
+      } else {
+        running = false;
+        runBtn.textContent = "[ RUN AUTOMATED SYSTEM AUDIT ]";
+        runBtn.style.borderColor = "var(--color-accent)";
+        runBtn.style.color = "var(--color-accent)";
+      }
+    }
+
+      printLine();
+    });
+  }
+</script>

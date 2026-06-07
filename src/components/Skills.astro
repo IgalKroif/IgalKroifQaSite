@@ -1,36 +1,49 @@
 ---
-const skillCategories = [
-  {
-    title: "Core Automation & Java Stack",
-    items: [
-      { label: "Core Languages", value: "Java (Advanced), Python, JavaScript, SQL, HTML, CSS" },
-      { label: "API Frameworks", value: "RestAssured (End-to-End Framework Architecture), Postman, SoapUI" },
-      { label: "Testing Engines", value: "JUnit, TestNG, Selenium WebDriver, Pytest" }
-    ]
-  },
-  {
-    title: "Specialized Engineering & Workflows",
-    items: [
-      { label: "Custom Tooling", value: "Browser Extension Development, Workflow Automation Software" },
-      { label: "AI Integration", value: "Kiro Usage with AI, Automated Test Design Optimization" },
-      { label: "QA Methodology", value: "Advanced Manual Engineering, Exploratory Testing, Structural Test Design" },
-      { label: "Databases & CI/CD", value: "PostgreSQL, Teradata SQL, Jenkins, GitHub Actions" }
-    ]
-  }
+/* 🧬 NERV SYNCHRONIZATION PROFICIENCY BAR ENGINE */
+const technicalSkills = [
+  { name: 'Core Java & OOP', rate: 92, classification: 'ALPHA CORE' },
+  { name: 'Python Engineering', rate: 88, classification: 'BETA CORE' },
+  { name: 'Selenium WebDriver', rate: 95, classification: 'TACTICAL INTERFACE' },
+  { name: 'REST API Automation (RestAssured / Postman)', rate: 94, classification: 'DATA INPUT' },
+  { name: 'SQL & Database Architecture', rate: 85, classification: 'KERNEL STORAGE' },
+  { name: 'CI/CD Pipelines & Jenkins', rate: 80, classification: 'PROTOTYPE ROUTING' },
 ];
 ---
-<section class="my-8">
-  <h2>Technical Stack & Skillsets</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-    {skillCategories.map((category) => (
-      <div class="p-4 rounded bg-eva-card border border-eva1-purple/30">
-        <h3 class="text-md font-bold text-eva1-green mb-2">{category.title}</h3>
-        <ul class="list-none space-y-1 text-sm">
-          {category.items.map((skill) => (
-            <li>🔹 <b>{skill.label}:</b> {skill.value}</li>
-          ))}
-        </ul>
+
+<div class="space-y-6">
+  <div>
+    <h2 class="text-xl font-bold tracking-widest text-[var(--color-accent)] uppercase mb-1">
+      📊 PILOT SYNCHRONIZATION METRICS
+    </h2>
+    <p class="text-xs text-white/50 font-mono">SYSTEM LOG: COGNITIVE INTERFACE CONNECTIONS STABLE</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {technicalSkills.map((skill) => (
+      <div class="bg-eva-card p-4 border rounded font-mono relative overflow-hidden group transition-all duration-300">
+        <div class="flex justify-between items-baseline mb-2">
+          <span class="text-white font-bold text-sm tracking-wide">{skill.name}</span>
+          <span class="text-xs text-white/40 tracking-tighter">[{skill.classification}]</span>
+        </div>
+        
+        <!-- Tactical Progress Bar Track -->
+        <div class="w-full bg-black/50 h-4 border border-white/10 rounded-sm relative overflow-hidden">
+          <div 
+            class="h-full bg-[var(--color-accent)] shadow-[0_0_10px_var(--glow-shadow)] transition-all duration-1000 ease-out relative group-hover:animate-pulse"
+            style={`width: ${skill.rate}%`}
+          >
+            <!-- Matrix Stripes Pattern Layer -->
+            <div class="absolute inset-0 bg-[linear-gradient(45deg,rgba(0,0,0,0.15)_25%,transparent_25%,transparent_50%,rgba(0,0,0,0.15)_50%,rgba(0,0,0,0.15)_75%,transparent_75%,transparent)] bg-[length:8px_8px]"></div>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center mt-2 text-xs">
+          <span class="text-white/60">SYNC LEVEL:</span>
+          <span class="font-bold text-[var(--color-highlight)] animate-pulse">
+            {skill.rate}% {skill.rate >= 95 ? '[BERSERK RATIO ACHIEVED]' : '[SYS OK]'}
+          </span>
+        </div>
       </div>
     ))}
   </div>
-</section>
+</div>

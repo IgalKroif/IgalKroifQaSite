@@ -1,14 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ThemeSwitcher from '../components/ThemeSwitcher.astro'; // 🔌 Injected
+import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import Experience from '../components/Experience.astro';
 import Skills from '../components/Skills.astro';
 import Connect from '../components/Connect.astro';
+import MagiSystem from '../components/MagiSystem.astro'; // 🔌 Injected
 ---
 
-<Layout title="Igal Kroif | QA Engineer"> <!-- -->
+<Layout title="Igal Kroif | QA Engineer">
   <main class="max-w-4xl mx-auto px-6 py-6 space-y-8 clear-both">
     
     <!-- 🎛️ SYSTEM THEME SHIFT CONTROLLER LAYER -->
@@ -17,9 +18,8 @@ import Connect from '../components/Connect.astro';
     <!-- Boot Terminal Diagnostics Section -->
     <Hero/>
 
-<!-- 📊 NERV INTERFACE TAB MATRIX CONTROL RAIL -->
+    <!-- 📊 NERV INTERFACE TAB MATRIX CONTROL RAIL -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 max-w-3xl mx-auto font-mono text-center">
-      <!-- FIXED: Changed opening tag from '<b' to '<button' -->
       <button class="tab-trigger active px-3 py-2 text-xs md:text-sm rounded tracking-wider" data-target="about-pane">
         [ ABOUT ME ]
       </button>
@@ -34,12 +34,14 @@ import Connect from '../components/Connect.astro';
       </button>
     </div>
 
-    <hr class="border-t border-eva1-purple/20 max-w-3xl mx-auto my-4" />
+    <hr class="border-t border-white/10 max-w-3xl mx-auto my-4" />
 
     <!-- 🛡️ SYNCHRONIZED INTERFACE DISPLAY LAYERS -->
     <div class="max-w-4xl mx-auto">
       <div id="about-pane" class="tab-content active">
         <About />
+        <!-- Injection of the Supercomputer Array inside the default active module -->
+        <MagiSystem />
       </div>
       <div id="experience-pane" class="tab-content">
         <Experience />
@@ -60,14 +62,13 @@ import Connect from '../components/Connect.astro';
 
   // 🧬 Centralized Terminal Stagger Engine
   function applyTerminalStream(container: HTMLElement) {
-    const printableLines = container.querySelectorAll('h2, h3, p, li, .bg-eva-card');
+    const printableLines = container.querySelectorAll('h2, h3, p, li, .bg-eva-card, .magi-node');
     printableLines.forEach((line, index) => {
-      // Adjust multiplier (0.08s) to tune the text-drop speed
-      (line as HTMLElement).style.animationDelay = `${index * 0.08}s`;
+      (line as HTMLElement).style.animationDelay = `${index * 0.06}s`;
     });
   }
 
-  // 🚀 System Boot Execution: Stream default active panel on page load
+  // 🚀 System Boot Execution
   const initialActivePanel = document.querySelector('.tab-content.active');
   if (initialActivePanel) {
     applyTerminalStream(initialActivePanel as HTMLElement);
@@ -76,26 +77,22 @@ import Connect from '../components/Connect.astro';
   // 🎛️ Interactive Tab Listener Matrix
   triggers.forEach(trigger => {
     trigger.addEventListener('click', () => {
-      // 1. Resolve target identification
       const targetId = trigger.getAttribute('data-target');
       if (!targetId) return;
 
       const targetContent = document.getElementById(targetId);
       if (!targetContent) return;
 
-      // 2. Clear out legacy active flags and old animation states
       triggers.forEach(t => t.classList.remove('active'));
       contents.forEach(c => {
         c.classList.remove('active');
-        const oldLines = c.querySelectorAll('h2, h3, p, li, .bg-eva-card');
+        const oldLines = c.querySelectorAll('h2, h3, p, li, .bg-eva-card, .magi-node');
         oldLines.forEach(line => (line as HTMLElement).style.removeProperty('animation-delay'));
       });
 
-      // 3. Commit active state to selected layers
       trigger.classList.add('active');
       targetContent.classList.add('active');
 
-      // 4. Run stream sequence on fresh layout mount
       applyTerminalStream(targetContent);
     });
   });

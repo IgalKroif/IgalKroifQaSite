@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+---
+
+<Layout>
+  <main>
+    <Hero />
+    <About />
+    <Experience />
+    <Skills />
+    
+    <footer class="py-10 text-center border-t border-neon mt-auto">
+      <p class="text-sm opacity-70">
+        &copy; {new Date().getFullYear()} Igal Kroif. Built with Astro & Tailwind.
+      </p>
+    </footer>
+  </main>
+</Layout>

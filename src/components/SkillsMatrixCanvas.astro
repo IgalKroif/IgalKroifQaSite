@@ -1,0 +1,117 @@
+---
+/* 🧬 ENTRY PLUG BIOMETRIC SYNCHRONIZATION CANVAS WAVE ENGINE */
+---
+<div class="bg-black/30 border border-white/10 rounded p-4 font-mono mt-6">
+  <div class="text-xs text-white/30 uppercase tracking-widest mb-3 border-b border-white/10 pb-1 flex justify-between">
+    <span>🧬 BIO-HARMONIC PILOT BIOMETRIC STREAMS</span>
+    <span class="text-[var(--color-highlight)] animate-pulse">[HARMONICS MONITOR: ONLINE]</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+    <!-- Active Telemetry Canvas -->
+    <div class="md:col-span-2 bg-black/70 rounded border border-black p-2 relative h-32 overflow-hidden">
+      <canvas id="sync-wave-canvas" class="w-full h-full block opacity-80"></canvas>
+      <div class="absolute bottom-2 left-3 text-[10px] text-white/40 tracking-widest">
+        WAVE FREQUENCY MODULATION OSCILLOSCOPE
+      </div>
+    </div>
+
+    <!-- Live Interactions Dashboard Panel -->
+    <div class="space-y-2">
+      <div class="text-[11px] text-white/50">// HOVER ELEMENT OVERLAYS TO ACCELERATE HARMONIC RATIOS:</div>
+      <div class="grid grid-cols-1 gap-1">
+        <button class="wave-mod-trigger text-left text-xs p-1.5 bg-black/40 border border-white/10 rounded text-white/80 hover:border-[var(--color-accent)] hover:text-white transition-all duration-200" data-rate="2.5" data-amp="25">
+          [ CORE JAVA FRAMEWORKS ]
+        </button>
+        <button class="wave-mod-trigger text-left text-xs p-1.5 bg-black/40 border border-white/10 rounded text-white/80 hover:border-[var(--color-accent)] hover:text-white transition-all duration-200" data-rate="4.5" data-amp="45">
+          [ REST-ASSURED API CORE ]
+        </button>
+        <button class="wave-mod-trigger text-left text-xs p-1.5 bg-black/40 border border-white/10 rounded text-white/80 hover:border-[var(--color-accent)] hover:text-white transition-all duration-200" data-rate="6.0" data-amp="65">
+          [ SELENIUM WEBDRIVER CORE ]
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const canvas = document.getElementById('sync-wave-canvas') as HTMLCanvasElement | null;
+  const triggers = document.querySelectorAll('.wave-mod-trigger');
+
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      let animationId = 0;
+      let offset = 0;
+      
+      // Target animation baseline values
+      let targetSpeed = 0.04;
+      let targetAmplitude = 15;
+      
+      // Current operational baseline values (for smooth step interpolation updates)
+      let currentSpeed = 0.04;
+      let currentAmplitude = 15;
+
+      function resizeCanvas() {
+        if (!canvas) return;
+        canvas.width = canvas.parentElement?.clientWidth || 400;
+        canvas.height = canvas.parentElement?.clientHeight || 128;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      function renderWaveform() {
+        if (!canvas || !ctx) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Interpolate smoothly toward modification limits
+        currentSpeed += (targetSpeed - currentSpeed) * 0.1;
+        currentAmplitude += (targetAmplitude - currentAmplitude) * 0.1;
+
+        // Fetch variable token bounds directly from applied stylesheet roots
+        const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim() || '#e63946';
+
+        ctx.beginPath();
+        ctx.strokeStyle = accentColor;
+        ctx.lineWidth = 2;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = accentColor;
+
+        const midY = canvas.height / 2;
+        
+        for (let x = 0; x < canvas.width; x++) {
+          const y = midY + Math.sin(x * 0.015 + offset) * currentAmplitude * Math.cos(x * 0.004 + offset * 0.5);
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+
+        ctx.stroke();
+        ctx.shadowBlur = 0; // Clear canvas stack optimization shadows
+
+        offset += currentSpeed;
+        animationId = requestAnimationFrame(renderWaveform);
+      }
+      renderWaveform();
+
+      // Hook up interaction listening vectors
+      triggers.forEach(trigger => {
+        trigger.addEventListener('mouseenter', () => {
+          const speedFactor = parseFloat(trigger.getAttribute('data-rate') || '2.5');
+          const ampFactor = parseFloat(trigger.getAttribute('data-amp') || '25');
+          
+          targetSpeed = 0.04 * speedFactor;
+          targetAmplitude = ampFactor;
+          
+          if (window.hasOwnProperty('playSystemSound')) {
+            (window as any).playSystemSound('click');
+          }
+        });
+
+        trigger.addEventListener('mouseleave', () => {
+          targetSpeed = 0.04;
+          targetAmplitude = 15;
+        });
+      });
+    }
+  }
+</script>

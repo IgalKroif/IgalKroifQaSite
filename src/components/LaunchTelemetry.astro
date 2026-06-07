@@ -1,0 +1,82 @@
+---
+/* 🚀 CI/CD RECONNAISSANCE LAUNCH WORKFLOW TELEMETRY */
+---
+<div class="bg-black/40 border border-white/10 rounded p-4 font-mono">
+  <div class="text-xs text-white/30 uppercase tracking-widest mb-3 border-b border-white/10 pb-1 flex justify-between">
+    <span>🚀 ORBITAL RECONNAISSANCE RUNTIME LAYER</span>
+    <span id="telemetry-sync-badge" class="animate-pulse text-[var(--color-subtext)]">[CONNECTING GITHUB MAIN-FRAME]</span>
+  </div>
+
+  <div class="space-y-2 text-xs">
+    <div class="flex justify-between items-center bg-black/50 p-2 border border-white/5 rounded">
+      <span class="text-white/60">DEPLOYMENT RUNTIME ACTION:</span>
+      <span id="workflow-id" class="text-white font-bold">[STANDBY]</span>
+    </div>
+
+    <div class="flex justify-between items-center bg-black/50 p-2 border border-white/5 rounded">
+      <span class="text-white/60">LAUNCH AUTHORIZATION STATUS:</span>
+      <span id="workflow-status" class="px-1.5 py-0.5 rounded text-white bg-white/10 font-bold select-none">
+        CHECKING QUEUE
+      </span>
+    </div>
+
+    <div class="flex justify-between items-center bg-black/50 p-2 border border-white/5 rounded">
+      <span class="text-white/60">LATEST ARCHITECTURE VERDICT:</span>
+      <span id="workflow-conclusion" class="text-[var(--color-accent)] font-semibold">—</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  async function queryLaunchTelemetry() {
+    const idNode = document.getElementById('workflow-id');
+    const statusNode = document.getElementById('workflow-status');
+    const conclusionNode = document.getElementById('workflow-conclusion');
+    const badgeNode = document.getElementById('telemetry-sync-badge');
+
+    if (!idNode || !statusNode || !conclusionNode || !badgeNode) return;
+
+    try {
+      // Dynamic public resolution mapping targets
+      const targetUrl = 'https://api.github.com/repos/igalkroif/IgalKroifQaSite/actions/runs?per_page=1';
+      const response = await fetch(targetUrl);
+      
+      if (!response.ok) throw new Error('Mainframe linkage offline');
+      const payload = await response.json();
+      
+      if (payload.workflow_runs && payload.workflow_runs.length > 0) {
+        const latestRun = payload.workflow_runs[0];
+        
+        badgeNode.textContent = "[LINK ESTABLISHED]";
+        badgeNode.style.color = "var(--color-accent)";
+        idNode.textContent = `BUILD #${latestRun.run_number}`;
+        
+        const rawStatus = latestRun.status.toUpperCase();
+        statusNode.textContent = `[ ${rawStatus} ]`;
+        
+        if (rawStatus === 'COMPLETED' || rawStatus === 'SUCCESS') {
+          statusNode.className = "px-1.5 py-0.5 rounded text-black bg-[var(--color-accent)] font-bold";
+          conclusionNode.textContent = "VERDICT: OPERATIONAL (STABLE OVERLAY)";
+          conclusionNode.style.color = "var(--color-accent)";
+        } else if (rawStatus === 'IN_PROGRESS' || rawStatus === 'QUEUED') {
+          statusNode.className = "px-1.5 py-0.5 rounded text-black bg-[var(--color-highlight)] font-bold animate-pulse";
+          conclusionNode.textContent = "WARNING: INJECTING NEW CODE COMPILATION MATRIX";
+          conclusionNode.style.color = "var(--color-highlight)";
+        } else {
+          statusNode.className = "px-1.5 py-0.5 rounded text-white bg-red-600 font-bold";
+          conclusionNode.textContent = "CRITICAL CODE MISALIGNMENT ENCOUNTERED";
+          conclusionNode.style.color = "#ef4444";
+        }
+      }
+    } catch (err) {
+      // Graceful local diagnostic recovery configuration fallback 
+      badgeNode.textContent = "[LOCAL FALLBACK SIMULATION RUNNING]";
+      idNode.textContent = "BUILD #2026.06.07";
+      statusNode.textContent = "[ SECURE STANDBY ]";
+      statusNode.className = "px-1.5 py-0.5 rounded text-black bg-[var(--color-accent)] font-bold";
+      conclusionNode.textContent = "VERDICT: LOCAL FRAME ENVIRONMENT SECURE";
+    }
+  }
+
+  queryLaunchTelemetry();
+</script>

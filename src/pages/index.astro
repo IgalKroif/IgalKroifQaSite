@@ -7,24 +7,37 @@ import Experience from '../components/Experience.astro';
 import Skills from '../components/Skills.astro';
 import Connect from '../components/Connect.astro';
 import MagiSystem from '../components/MagiSystem.astro';
-import ApiSandbox from '../components/ApiSandbox.astro';       // 🔌 Injected
-import ThreatTracker from '../components/ThreatTracker.astro'; // 🔌 Injected
-import EffectsController from '../components/EffectsController.astro'; // 🔌 Injected
+import ApiSandbox from '../components/ApiSandbox.astro';
+import ThreatTracker from '../components/ThreatTracker.astro';
+import EffectsController from '../components/EffectsController.astro';
+
+// 🔌 IMPORT ALL NEW COMPONENT SUBSYSTEM LAYERS
+import LaunchTelemetry from '../components/LaunchTelemetry.astro';
+import SkillsMatrixCanvas from '../components/SkillsMatrixCanvas.astro';
+import AtFieldSandbox from '../components/AtFieldSandbox.astro';
+import ReportVault from '../components/ReportVault.astro';
 ---
 
 <Layout title="Igal Kroif | QA Engineer">
   <main class="max-w-4xl mx-auto px-6 py-6 space-y-8 clear-both relative">
     
-    <!-- 🎛️ ENVIRONMENTAL ENGINE MEDIA OVERLAYS -->
+    <!-- ENVIRONMENTAL ENGINE MEDIA OVERLAYS -->
     <EffectsController />
 
     <!-- SYSTEM THEME SHIFT CONTROLLER LAYER -->
     <ThemeSwitcher />
 
-    <!-- Boot Terminal Diagnostics Section -->
-    <Hero/>
+    <!-- Boot Terminal Diagnostics Section & Live Pipeline Tracker Bundle -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+      <div class="md:col-span-2">
+        <Hero/>
+      </div>
+      <div class="md:col-span-1 md:pt-14">
+        <LaunchTelemetry />
+      </div>
+    </div>
 
-    <!-- 📊 NERV INTERFACE TAB MATRIX CONTROL RAIL -->
+    <!-- NERV INTERFACE TAB MATRIX CONTROL RAIL -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 max-w-3xl mx-auto font-mono text-center">
       <button class="tab-trigger active px-3 py-2 text-xs md:text-sm rounded tracking-wider" data-target="about-pane">
         [ ABOUT ME ]
@@ -42,7 +55,7 @@ import EffectsController from '../components/EffectsController.astro'; // 🔌 I
 
     <hr class="border-t border-white/10 max-w-3xl mx-auto my-4" />
 
-    <!-- 🛡️ SYNCHRONIZED INTERFACE DISPLAY LAYERS -->
+    <!-- SYNCHRONIZED INTERFACE DISPLAY LAYERS -->
     <div class="max-w-4xl mx-auto">
       <div id="about-pane" class="tab-content active">
         <About />
@@ -50,13 +63,16 @@ import EffectsController from '../components/EffectsController.astro'; // 🔌 I
       </div>
       <div id="experience-pane" class="tab-content">
         <Experience />
-        <!-- Appends the containment tracker logs directly into the work archive -->
         <ThreatTracker />
+        <!-- Appends Report Vault directly into the execution history tab -->
+        <ReportVault />
       </div>
       <div id="skills-pane" class="tab-content">
         <Skills />
-        <!-- Appends the API sandbox console client directly into engineering tools -->
+        <SkillsMatrixCanvas />
         <ApiSandbox />
+        <!-- Appends Input Shield directly beneath sandbox parameters -->
+        <AtFieldSandbox />
       </div>
       <div id="connect-pane" class="tab-content">
         <Connect />
@@ -69,7 +85,6 @@ import EffectsController from '../components/EffectsController.astro'; // 🔌 I
   const triggers = document.querySelectorAll('.tab-trigger');
   const contents = document.querySelectorAll('.tab-content');
 
-  // 🧬 Centralized Terminal Stagger Engine
   function applyTerminalStream(container: HTMLElement) {
     const printableLines = container.querySelectorAll('h2, h3, p, li, .bg-eva-card, .magi-node, option');
     printableLines.forEach((line, index) => {
@@ -77,13 +92,11 @@ import EffectsController from '../components/EffectsController.astro'; // 🔌 I
     });
   }
 
-  // 🚀 System Boot Execution
   const initialActivePanel = document.querySelector('.tab-content.active');
   if (initialActivePanel) {
     applyTerminalStream(initialActivePanel as HTMLElement);
   }
 
-  // 🎛️ Interactive Tab Listener Matrix
   triggers.forEach(trigger => {
     trigger.addEventListener('click', () => {
       const targetId = trigger.getAttribute('data-target');

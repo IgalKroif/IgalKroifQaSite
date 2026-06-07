@@ -7,11 +7,58 @@ import Skills from '../components/Skills.astro';
 ---
 
 <Layout title="Igal Kroif | QA Engineer">
-  <!-- 🛡️ THIS CONTAINER FORCES PERFECT VERTICAL ALIGNMENT FOR ALL SECTIONS -->
-  <main class="max-w-4xl mx-auto px-6 py-12 space-y-16 clear-both">
+  <main class="max-w-4xl mx-auto px-6 py-12 space-y-8 clear-both">
+    <!-- Boot Terminal Diagnostics Section -->
     <Hero />
-    <About />
-    <Experience />
-    <Skills />
+
+    <!-- 📊 NERV INTERFACE TAB MATRIX CONTROL RAIL -->
+    <div class="grid grid-cols-3 gap-2 md:gap-4 max-w-2xl mx-auto font-mono text-center">
+      <button class="tab-trigger active px-4 py-2 text-sm rounded tracking-wider" data-target="about-pane">
+        [ ABOUT ME ]
+      </button>
+      <button class="tab-trigger px-4 py-2 text-sm rounded tracking-wider" data-target="experience-pane">
+        [ EXPERIENCE ]
+      </button>
+      <button class="tab-trigger px-4 py-2 text-sm rounded tracking-wider" data-target="skills-pane">
+        [ SKILLSETS ]
+      </button>
+    </div>
+
+    <hr class="border-t border-eva1-purple/20 max-w-2xl mx-auto my-4" />
+
+    <!-- 🛡️ SYNCHRONIZED INTERFACE DISPLAY LAYERS -->
+    <div class="max-w-4xl mx-auto">
+      <div id="about-pane" class="tab-content active">
+        <About />
+      </div>
+      <div id="experience-pane" class="tab-content">
+        <Experience />
+      </div>
+      <div id="skills-pane" class="tab-content">
+        <Skills />
+      </div>
+    </div>
   </main>
 </Layout>
+
+<script>
+  const triggers = document.querySelectorAll('.tab-trigger');
+  const contents = document.querySelectorAll('.tab-content');
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      // Clear active system flags from all selectors
+      triggers.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      // Flag newly designated parameters
+      trigger.classList.add('active');
+      const targetId = trigger.getAttribute('data-target');
+      const targetContent = document.getElementById(targetId);
+      
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+    });
+  });
+</script>

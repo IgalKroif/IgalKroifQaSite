@@ -66,3 +66,58 @@ pre, code, [class*="terminal"], .bg-eva-card {
   border: 1px solid #7C3AED !important; /* Purple Structural Outlines */
   box-shadow: 0 0 15px rgba(124, 58, 237, 0.2);
 }
+
+/* ==========================================================================
+   ⚡ TACTICAL HOVER MODIFIERS & INTERACTIVE COMPONENT TAB MATRIX
+   ========================================================================== */
+
+/* Neon Interactive Interface Buttons */
+.tab-trigger {
+  background-color: #130B24;
+  border: 1px solid rgba(124, 58, 237, 0.4);
+  color: #A1A1AA;
+  cursor: pointer;
+  font-family: "Share Tech Mono", "Courier New", monospace;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+}
+
+/* Hovering Glow Interaction state */
+.tab-trigger:hover {
+  color: #39FF14 !important;
+  border-color: #39FF14 !important;
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Synchronized Active Tab Highlight */
+.tab-trigger.active {
+  color: #090514 !important;
+  background-color: #39FF14 !important;
+  border-color: #39FF14 !important;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+  font-weight: bold;
+}
+
+/* Card Hover Enhancements */
+.bg-eva-card {
+  transition: all 0.3s ease;
+}
+
+.bg-eva-card:hover {
+  border-color: #39FF14 !important;
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.2) !important;
+  transform: scale(1.01);
+}
+
+/* Smooth display transitions for hidden blocks */
+.tab-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.tab-content.active {
+  display: block;
+  opacity: 1;
+}

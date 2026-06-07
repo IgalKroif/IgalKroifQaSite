@@ -1,10 +1,23 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Custom utilities */
-@layer utilities {
-  .bg-bg { background-color: theme('colors.bg'); }
-  .text-primary { color: theme('colors.primary'); }
-  .border-neon { border-color: theme('colors.neon'); }
+@theme {
+  /* 💻 Fixes the compiler error for theme(colors.bg) */
+  --color-bg: #0B0C10; 
+  
+  /* 🤖 Shared Dark Base (The MAGI System terminal look) */
+  --color-eva-bg: #0B0C10;
+  --color-eva-card: #16161A;
+  
+  /* 💜 EVA-01 Palette */
+  --color-eva1-purple: #995CD0;
+  --color-eva1-green: #8EDF5F;
+  --color-eva1-orange: #EC7744;
+  
+  /* ❤️ EVA-02 Palette */
+  --color-eva2-red: #E32A2A;
+  --color-eva2-orange: #FFA700;
+  --color-eva2-white: #F4F4F4;
+
+  /* 📟 Custom Terminal Typography */
+  --font-mono: "Share Tech Mono", "Courier New", monospace;
 }

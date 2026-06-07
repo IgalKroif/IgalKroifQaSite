@@ -1,43 +1,56 @@
 ---
-/* 🚀 CI/CD RECONNAISSANCE LAUNCH WORKFLOW TELEMETRY */
+/* 🚀 CI/CD RECONNAISSANCE LAUNCH WORKFLOW TELEMETRY - WIDESCREEN OPTIMIZED */
 ---
-<div class="bg-black/40 border border-white/10 rounded p-4 font-mono">
-  <div class="text-xs text-white/30 uppercase tracking-widest mb-3 border-b border-white/10 pb-1 flex justify-between">
-    <span>🚀 ORBITAL RECONNAISSANCE RUNTIME LAYER</span>
-    <span id="telemetry-sync-badge" class="animate-pulse text-[var(--color-subtext)]">[CONNECTING GITHUB MAIN-FRAME]</span>
+<div class="bg-black/60 border-2 border-[var(--color-accent)] rounded p-5 font-mono shadow-[0_0_15px_rgba(230,57,70,0.15)] relative overflow-hidden">
+  
+  <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-[var(--color-accent)]"></div>
+  <div class="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-[var(--color-accent)]"></div>
+  <div class="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-[var(--color-accent)]"></div>
+  <div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-[var(--color-accent)]"></div>
+
+  <div class="text-xs text-white/40 uppercase tracking-widest mb-4 border-b border-white/10 pb-2 flex justify-between items-center">
+    <span class="font-bold flex items-center gap-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-[var(--color-accent)] animate-ping"></span>
+      🚀 ORBITAL RECONNAISSANCE SYSTEM MAIN-FRAME LINK
+    </span>
+    <span id="telemetry-sync-badge" class="animate-pulse tracking-normal text-amber-500 font-bold">[ INITIALIZING DATA STREAM ]</span>
   </div>
 
-  <div class="space-y-2 text-xs">
-    <div class="flex justify-between items-center bg-black/50 p-2 border border-white/5 rounded">
-      <span class="text-white/60">DEPLOYMENT RUNTIME ACTION:</span>
-      <span id="workflow-id" class="text-white font-bold">[STANDBY]</span>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    
+    <div class="bg-black/80 p-3 border border-white/10 rounded flex flex-col justify-between min-h-[70px]">
+      <span class="text-[10px] text-white/40 uppercase tracking-wider">// DEPLOYMENT RUNTIME ACTION:</span>
+      <span id="workflow-id" class="text-lg font-black text-white tracking-wide mt-1">[STANDBY]</span>
     </div>
 
-    <div class="flex justify-between items-center bg-black/50 p-2 border border-white/5 rounded">
-      <span class="text-white/60">LAUNCH AUTHORIZATION STATUS:</span>
-      <span id="workflow-status" class="px-1.5 py-0.5 rounded text-white bg-white/10 font-bold select-none">
-        CHECKING QUEUE
-      </span>
+    <div class="bg-black/80 p-3 border border-white/10 rounded flex flex-col justify-between min-h-[70px]">
+      <span class="text-[10px] text-white/40 uppercase tracking-wider">// LAUNCH AUTHORIZATION STATUS:</span>
+      <div class="mt-1">
+        <span id="workflow-status" class="inline-block px-2 py-0.5 rounded text-xs bg-white/10 text-white font-bold tracking-widest select-none uppercase">
+          SCANNING QUEUE
+        </span>
+      </div>
     </div>
 
-    <div class="flex justify-between items-center bg-black/50 p-2 border border-white/5 rounded">
-      <span class="text-white/60">LATEST ARCHITECTURE VERDICT:</span>
-      <span id="workflow-conclusion" class="text-[var(--color-accent)] font-semibold">—</span>
+    <div class="bg-black/80 p-3 border border-white/10 rounded flex flex-col justify-between min-h-[70px]">
+      <span class="text-[10px] text-white/40 uppercase tracking-wider">// ARCHITECTURE VERDICT LOG:</span>
+      <span id="workflow-conclusion" class="text-xs font-bold text-[var(--color-subtext)] tracking-wide mt-1 truncate">—</span>
     </div>
+
   </div>
 </div>
 
 <script>
   async function queryLaunchTelemetry() {
-    const idNode = document.getElementById('workflow-id');
-    const statusNode = document.getElementById('workflow-status');
-    const conclusionNode = document.getElementById('workflow-conclusion');
-    const badgeNode = document.getElementById('telemetry-sync-badge');
+    // Explicit type assertions prevent the TS 'possibly null' compiler errors
+    const idNode = document.getElementById('workflow-id') as HTMLElement | null;
+    const statusNode = document.getElementById('workflow-status') as HTMLElement | null;
+    const conclusionNode = document.getElementById('workflow-conclusion') as HTMLElement | null;
+    const badgeNode = document.getElementById('telemetry-sync-badge') as HTMLElement | null;
 
     if (!idNode || !statusNode || !conclusionNode || !badgeNode) return;
 
     try {
-      // Dynamic public resolution mapping targets
       const targetUrl = 'https://api.github.com/repos/igalkroif/IgalKroifQaSite/actions/runs?per_page=1';
       const response = await fetch(targetUrl);
       
@@ -47,36 +60,39 @@
       if (payload.workflow_runs && payload.workflow_runs.length > 0) {
         const latestRun = payload.workflow_runs[0];
         
-        badgeNode.textContent = "[LINK ESTABLISHED]";
-        badgeNode.style.color = "var(--color-accent)";
-        idNode.textContent = `BUILD #${latestRun.run_number}`;
+        badgeNode.textContent = "[ LINK ESTABLISHED ]";
+        badgeNode.className = "text-[var(--color-accent)] font-bold tracking-normal animate-none";
+        idNode.textContent = `BUILD ##${latestRun.run_number}`;
         
         const rawStatus = latestRun.status.toUpperCase();
         statusNode.textContent = `[ ${rawStatus} ]`;
         
         if (rawStatus === 'COMPLETED' || rawStatus === 'SUCCESS') {
-          statusNode.className = "px-1.5 py-0.5 rounded text-black bg-[var(--color-accent)] font-bold";
-          conclusionNode.textContent = "VERDICT: OPERATIONAL (STABLE OVERLAY)";
+          statusNode.className = "px-2 py-0.5 text-xs rounded text-black bg-[var(--color-accent)] font-black tracking-widest";
+          conclusionNode.textContent = "SYSTEM STATUS: OPERATIONAL OVERLAY";
           conclusionNode.style.color = "var(--color-accent)";
         } else if (rawStatus === 'IN_PROGRESS' || rawStatus === 'QUEUED') {
-          statusNode.className = "px-1.5 py-0.5 rounded text-black bg-[var(--color-highlight)] font-bold animate-pulse";
-          conclusionNode.textContent = "WARNING: INJECTING NEW CODE COMPILATION MATRIX";
+          statusNode.className = "px-2 py-0.5 text-xs rounded text-black bg-[var(--color-highlight)] font-black tracking-widest animate-pulse";
+          conclusionNode.textContent = "WARNING: COMPILING RECON CODE SEGMENTS";
           conclusionNode.style.color = "var(--color-highlight)";
         } else {
-          statusNode.className = "px-1.5 py-0.5 rounded text-white bg-red-600 font-bold";
-          conclusionNode.textContent = "CRITICAL CODE MISALIGNMENT ENCOUNTERED";
+          statusNode.className = "px-2 py-0.5 text-xs rounded text-white bg-red-600 font-black tracking-widest";
+          conclusionNode.textContent = "CRITICAL METRIC MISALIGNMENT DETECTED";
           conclusionNode.style.color = "#ef4444";
         }
       }
     } catch (err) {
-      // Graceful local diagnostic recovery configuration fallback 
-      badgeNode.textContent = "[LOCAL FALLBACK SIMULATION RUNNING]";
-      idNode.textContent = "BUILD #2026.06.07";
+      // Graceful local diagnostic environment fallback
+      badgeNode.textContent = "[ SIMULATION RECOVERY ACTIVE ]";
+      badgeNode.className = "text-[var(--color-highlight)] font-bold tracking-normal";
+      idNode.textContent = "RUN #2026.06.07";
       statusNode.textContent = "[ SECURE STANDBY ]";
-      statusNode.className = "px-1.5 py-0.5 rounded text-black bg-[var(--color-accent)] font-bold";
-      conclusionNode.textContent = "VERDICT: LOCAL FRAME ENVIRONMENT SECURE";
+      statusNode.className = "px-2 py-0.5 text-xs rounded text-black bg-[var(--color-accent)] font-black tracking-widest";
+      conclusionNode.textContent = "VERDICT: MONITOR ENVIRONMENT STABLE";
+      conclusionNode.style.color = "var(--color-accent)";
     }
   }
 
+  // Execute terminal mapping run
   queryLaunchTelemetry();
 </script>

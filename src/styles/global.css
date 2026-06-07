@@ -1,54 +1,68 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0B0C10; 
-  --color-eva-bg: #0B0C10;
-  --color-eva-card: #16161A;
+  --color-bg: #090514;               /* Armored Hull Midnight Purple */
+  --color-eva-bg: #090514;
+  --color-eva-card: #130B24;         /* Entry Plug Internal Frame */
   
-  --color-eva1-purple: #995CD0;
-  --color-eva1-green: #8EDF5F;
-  --color-eva1-orange: #EC7744;
+  --color-eva1-purple: #7C3AED;      /* High-Voltage Armor Purple */
+  --color-eva1-purple-glow: #A78BFA;
+  --color-eva1-green: #39FF14;       /* Bio-Luminescent Neon Acid Green */
+  --color-eva1-green-glow: #4ADE80;
   
-  --color-eva2-red: #E32A2A;
-  --color-eva2-orange: #FFA700;
-  --color-eva2-white: #F4F4F4;
-
-  --font-mono: "Share Tech Mono", "Courier New", monospace;
+  --color-eva-orange: #FF6B00;       /* MAGI Emergency System Alert Orange */
+  --color-eva-white: #F9FAFB;        /* High-Contrast Clear White Text */
+  --color-eva-muted: #A1A1AA;        /* Technical Subtext Gray */
 }
 
 /* ==========================================================================
-   🚨 GLOBAL CONTRAST SAFETY NET (Overrides default dark text) 🚨
+   🧬 EVA-01 MONITOR MODE INTERFACE 
    ========================================================================== */
 
 body {
-  background-color: #0B0C10 !important;
-  color: #F4F4F4 !important;
+  background-color: #090514 !important;
+  color: #F9FAFB !important;
+  font-family: "Share Tech Mono", "Courier New", monospace;
 }
 
-/* Force standard text, paragraphs, and list items to be clean and legible */
-p, li, span, label, text, small {
-  color: #C5C6C7 !important;
+/* Clean, crisp readability for standard text copy */
+p, li, span, small {
+  color: #D1D5DB !important; 
 }
 
-/* 🍊 Main Title: EVA-02 / Emergency Alert Orange Glow */
+/* Clear definitions for highlighted keywords */
+strong, b {
+  color: #39FF14 !important; /* Acid Green emphasis */
+}
+
+/* 🍊 Main Identity Title: Glowing Tactical Orange */
 h1 {
-  color: #FFA700 !important;
-  text-shadow: 0 0 12px rgba(255, 167, 0, 0.6);
-  font-weight: 700;
-}
-
-/* 🍏 Section Headings: EVA-01 Neon Green Interface Glow */
-h2, h3, h4 {
-  color: #8EDF5F !important;
-  text-shadow: 0 0 8px rgba(142, 223, 95, 0.4);
-  font-weight: 600;
+  color: #FF6B00 !important;
+  text-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+  font-weight: 800;
   letter-spacing: 0.05em;
 }
 
-/* 📟 The Terminal / Core Technical Blocks */
-pre, code, [class*="terminal"] {
-  background-color: #16161A !important;
-  border: 1px solid #995CD0 !important; /* EVA-01 Signature Purple Border */
-  color: #8EDF5F !important;            /* Neon Green Command Line Text */
-  box-shadow: inset 0 0 10px rgba(153, 92, 208, 0.2);
+/* 🍏 Component Titles: Neon Acid Green Alert Lines */
+h2 {
+  color: #39FF14 !important;
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+  font-weight: 700;
+  border-bottom: 2px solid #7C3AED !important; /* Grounded Purple Support Rail */
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+/* 💜 Inner Component Headers */
+h3, h4 {
+  color: #A78BFA !important;
+  font-weight: 600;
+}
+
+/* 📟 Terminal Boxes and Card Content Blocks */
+pre, code, [class*="terminal"], .bg-eva-card {
+  background-color: #130B24 !important;
+  border: 1px solid #7C3AED !important; /* Purple Structural Outlines */
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.2);
 }

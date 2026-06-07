@@ -4,7 +4,6 @@
    🧬 NERV ENGINE MULTI-THEMED ATTRIBUTE CORE 
    ========================================================================== */
 
-/* Default Core System: EVA-01 (Shinji Ikari Custom Profile) */
 :root, [data-theme="eva-01"] {
   --color-bg: #090514;
   --color-card: #130B24;
@@ -14,7 +13,6 @@
   --glow-shadow: rgba(57, 255, 20, 0.4);
 }
 
-/* Prototype Profile: EVA-00 (Rei Ayanami Custom Profile) */
 [data-theme="eva-00"] {
   --color-bg: #050B14;
   --color-card: #0D1624;
@@ -24,17 +22,15 @@
   --glow-shadow: rgba(255, 184, 0, 0.4);
 }
 
-/* Production Profile: EVA-02 (Asuka Langley Custom Profile) */
 [data-theme="eva-02"] {
   --color-bg: #140303;
   --color-card: #240A0A;
   --color-accent: #FF1E27;        /* Burning Crimson Armor */
-  --color-highlight: #FF9900;     /* Imperial Yellow Accent Accel */
+  --color-highlight: #FF9900;     /* Imperial Yellow */
   --color-subtext: #FCA5A5;       /* Warning Red Muted */
   --glow-shadow: rgba(255, 30, 39, 0.4);
 }
 
-/* Operations Frame: NERV HQ Headquarters Strategic Mode */
 [data-theme="nerv"] {
   --color-bg: #111111;
   --color-card: #1C1C1C;
@@ -53,10 +49,37 @@ body {
   color: #F9FAFB !important;
   font-family: "Share Tech Mono", "Courier New", monospace;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1.1rem; /* 📏 Global core scaling update */
 }
 
-p, li, span, small {
-  color: #D1D5DB !important; 
+/* 📟 TERMINAL-STYLE PROMPT LINE INJECTIONS FOR BODY COPY */
+p {
+  color: #E5E7EB !important; 
+  font-size: 1.15rem !important;
+  line-height: 1.75 !important;
+  margin-bottom: 1.25rem;
+}
+
+li {
+  color: #D1D5DB !important;
+  font-size: 1.1rem !important;
+  position: relative;
+  list-style: none;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Injects terminal list pointers automatically */
+li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--color-highlight);
+  font-weight: bold;
+}
+
+span, small {
+  font-size: 1rem !important;
 }
 
 strong, b {
@@ -79,12 +102,12 @@ h2 {
   padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
   text-transform: uppercase;
-  transition: color 0.35s ease;
+  font-size: 1.6rem !important;
 }
 
 h3, h4 {
   color: var(--color-subtext) !important;
-  transition: color 0.35s ease;
+  font-size: 1.3rem !important;
 }
 
 pre, code, [class*="terminal"], .bg-eva-card {
@@ -94,7 +117,6 @@ pre, code, [class*="terminal"], .bg-eva-card {
   transition: all 0.35s ease;
 }
 
-/* Dynamic Active Tab Interactions */
 .tab-trigger.active {
   color: var(--color-bg) !important;
   background-color: var(--color-accent) !important;
@@ -102,43 +124,65 @@ pre, code, [class*="terminal"], .bg-eva-card {
   box-shadow: 0 0 15px var(--glow-shadow);
 }
 
-/* Custom Card Hover Highlight Vectors */
 .bg-eva-card:hover {
   border-color: var(--color-highlight) !important;
   box-shadow: 0 0 20px var(--glow-shadow) !important;
 }
 
-/* 🚨 REVEAL NERV LOGO INFRASTRUCTURE ON ATTRIBUTE ACTIVE */
 [data-theme="nerv"] .nerv-slogan-container {
   display: block !important;
   color: var(--color-highlight);
   text-shadow: 0 0 8px rgba(255, 85, 0, 0.3);
   animation: pulse 3s infinite alternate;
 }
+
 /* ==========================================================================
-   🎯 INTERACTIVE LAYER COMPONENT ROUTING (FIXES SINGLE PAGE STACKING)
+   ⚡ INTERACTIVE LAYER ROUTING & TERMINAL REVEAL ENGINE
    ========================================================================== */
 
-/* Hide all inactive tab panes by default */
+/* Consolidated: Inactive tab routing baseline */
 .tab-content {
   display: none !important;
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
-/* Reveal the active synchronized tab pane */
+/* Consolidated: Active synchronized tab layer routing */
 .tab-content.active {
   display: block !important;
   opacity: 1 !important;
-  transform: translateY(0);
+}
+
+/* Cascading typewriter streaming effect across inner children contents */
+.tab-content.active p, 
+.tab-content.active li,
+.tab-content.active h2,
+.tab-content.active .bg-eva-card {
+  animation: terminalDataPrint 0.4s cubic-bezier(0.11, 0, 0.5, 0) both;
+}
+
+/* Cascade layout print delay metrics */
+.tab-content.active h2 { animation-delay: 0.05s; }
+.tab-content.active p:nth-of-type(1) { animation-delay: 0.1s; }
+.tab-content.active p:nth-of-type(2) { animation-delay: 0.18s; }
+.tab-content.active p:nth-of-type(3) { animation-delay: 0.25s; }
+.tab-content.active li { animation-delay: 0.2s; }
+.tab-content.active .bg-eva-card { animation-delay: 0.15s; }
+
+@keyframes terminalDataPrint {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ==========================================================================
-   🎨 THEME SWITCHER DYNAMIC ACTIVE HIGHLIGHTS (FIXES BUTTON COLOR MISMATCH)
+   🎨 THEME SWITCHER DYNAMIC ACTIVE HIGHLIGHTS
    ========================================================================== */
 
-/* When EVA-01 Profile is Active */
 [data-theme="eva-01"] [data-theme-id="eva-01"] {
   background-color: #39FF14 !important;
   color: #090514 !important;
@@ -146,7 +190,6 @@ pre, code, [class*="terminal"], .bg-eva-card {
   border-color: #39FF14 !important;
 }
 
-/* When EVA-00 Profile is Active */
 [data-theme="eva-00"] [data-theme-id="eva-00"] {
   background-color: #FFB800 !important;
   color: #050B14 !important;
@@ -154,7 +197,6 @@ pre, code, [class*="terminal"], .bg-eva-card {
   border-color: #FFB800 !important;
 }
 
-/* When EVA-02 Profile is Active */
 [data-theme="eva-02"] [data-theme-id="eva-02"] {
   background-color: #FF1E27 !important;
   color: #140303 !important;
@@ -162,7 +204,6 @@ pre, code, [class*="terminal"], .bg-eva-card {
   border-color: #FF1E27 !important;
 }
 
-/* When NERV Strategic Mode is Active */
 [data-theme="nerv"] [data-theme-id="nerv"] {
   background-color: #E50000 !important;
   color: #111111 !important;

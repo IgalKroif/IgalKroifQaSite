@@ -1,7 +1,8 @@
 ---
 const themes = [
-  { id: "eva-01", name: "EVA-01", color: "border-[#39FF14]/40 text-[#39FF14] hover:border-[#39FF14]" },
+  // EVA-00 relocated to the left-most index node
   { id: "eva-00", name: "EVA-00", color: "border-[#FFB800]/40 text-[#FFB800] hover:border-[#FFB800]" },
+  { id: "eva-01", name: "EVA-01", color: "border-[#39FF14]/40 text-[#39FF14] hover:border-[#39FF14]" },
   { id: "eva-02", name: "EVA-02", color: "border-[#FF1E27]/40 text-[#FF1E27] hover:border-[#FF1E27]" },
   { id: "nerv", name: "NERV HQ", color: "border-[#E50000]/40 text-[#E50000] hover:border-[#E50000]" }
 ];
@@ -20,8 +21,9 @@ const themes = [
 </div>
 
 <script>
-  // Your existing local storage initialization logic remains intact here!
   const buttons = document.querySelectorAll('.theme-selector');
+  
+  // ✅ Keeps EVA-01 as the system fallback default if no cached token is present
   const activeTheme = localStorage.getItem('nerv-user-theme') || 'eva-01';
   document.documentElement.setAttribute('data-theme', activeTheme);
 

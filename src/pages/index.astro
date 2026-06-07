@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ThemeSwitcher from '../components/ThemeSwitcher.astro'; // 🔌 Injected
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import Experience from '../components/Experience.astro';
@@ -7,13 +8,18 @@ import Skills from '../components/Skills.astro';
 import Connect from '../components/Connect.astro';
 ---
 
-<Layout title="Igal Kroif | QA Engineer">
-  <main class="max-w-4xl mx-auto px-6 py-12 space-y-8 clear-both">
+<Layout title="Igal Kroif | QA Engineer"> <!-- -->
+  <main class="max-w-4xl mx-auto px-6 py-6 space-y-8 clear-both">
+    
+    <!-- 🎛️ SYSTEM THEME SHIFT CONTROLLER LAYER -->
+    <ThemeSwitcher />
+
     <!-- Boot Terminal Diagnostics Section -->
     <Hero />
 
-    <!-- 📊 NERV INTERFACE TAB MATRIX CONTROL RAIL -->
+<!-- 📊 NERV INTERFACE TAB MATRIX CONTROL RAIL -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 max-w-3xl mx-auto font-mono text-center">
+      <!-- FIXED: Changed opening tag from '<b' to '<button' -->
       <button class="tab-trigger active px-3 py-2 text-xs md:text-sm rounded tracking-wider" data-target="about-pane">
         [ ABOUT ME ]
       </button>
@@ -64,10 +70,13 @@ import Connect from '../components/Connect.astro';
       // Flag newly designated parameters
       trigger.classList.add('active');
       const targetId = trigger.getAttribute('data-target');
-      const targetContent = document.getElementById(targetId);
       
-      if (targetContent) {
-        targetContent.classList.add('active');
+      // ✅ FIX: Strict type evaluation check satisfies ts(2345)
+      if (targetId) {
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
       }
     });
   });

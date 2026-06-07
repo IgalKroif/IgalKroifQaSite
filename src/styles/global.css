@@ -1,123 +1,117 @@
 @import "tailwindcss";
 
-@theme {
-  --color-bg: #090514;               /* Armored Hull Midnight Purple */
-  --color-eva-bg: #090514;
-  --color-eva-card: #130B24;         /* Entry Plug Internal Frame */
-  
-  --color-eva1-purple: #7C3AED;      /* High-Voltage Armor Purple */
-  --color-eva1-purple-glow: #A78BFA;
-  --color-eva1-green: #39FF14;       /* Bio-Luminescent Neon Acid Green */
-  --color-eva1-green-glow: #4ADE80;
-  
-  --color-eva-orange: #FF6B00;       /* MAGI Emergency System Alert Orange */
-  --color-eva-white: #F9FAFB;        /* High-Contrast Clear White Text */
-  --color-eva-muted: #A1A1AA;        /* Technical Subtext Gray */
+/* ==========================================================================
+   🧬 NERV ENGINE MULTI-THEMED ATTRIBUTE CORE 
+   ========================================================================== */
+
+/* Default Core System: EVA-01 (Shinji Ikari Custom Profile) */
+:root, [data-theme="eva-01"] {
+  --color-bg: #090514;
+  --color-card: #130B24;
+  --color-accent: #39FF14;        /* Acid Green */
+  --color-highlight: #FF6B00;     /* Warning Orange */
+  --color-subtext: #A78BFA;       /* Light Purple */
+  --glow-shadow: rgba(57, 255, 20, 0.4);
+}
+
+/* Prototype Profile: EVA-00 (Rei Ayanami Custom Profile) */
+[data-theme="eva-00"] {
+  --color-bg: #050B14;
+  --color-card: #0D1624;
+  --color-accent: #FFB800;        /* Prototype Marigold Amber */
+  --color-highlight: #00D2FF;     /* Jet Shield Blue */
+  --color-subtext: #93C5FD;       /* Technical Frost Blue */
+  --glow-shadow: rgba(255, 184, 0, 0.4);
+}
+
+/* Production Profile: EVA-02 (Asuka Langley Custom Profile) */
+[data-theme="eva-02"] {
+  --color-bg: #140303;
+  --color-card: #240A0A;
+  --color-accent: #FF1E27;        /* Burning Crimson Armor */
+  --color-highlight: #FF9900;     /* Imperial Yellow Accent Accel */
+  --color-subtext: #FCA5A5;       /* Warning Red Muted */
+  --glow-shadow: rgba(255, 30, 39, 0.4);
+}
+
+/* Operations Frame: NERV HQ Headquarters Strategic Mode */
+[data-theme="nerv"] {
+  --color-bg: #111111;
+  --color-card: #1C1C1C;
+  --color-accent: #E50000;        /* Alert Red Phase Line */
+  --color-highlight: #FF5500;     /* Critical Geo-Front Orange */
+  --color-subtext: #D1D1D6;       /* Strategic Graphite */
+  --glow-shadow: rgba(229, 0, 0, 0.4);
 }
 
 /* ==========================================================================
-   🧬 EVA-01 MONITOR MODE INTERFACE 
+   🛠️ SYSTEM INTEGRATION & COMPONENT MAPS
    ========================================================================== */
 
 body {
-  background-color: #090514 !important;
+  background-color: var(--color-bg) !important;
   color: #F9FAFB !important;
   font-family: "Share Tech Mono", "Courier New", monospace;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Clean, crisp readability for standard text copy */
 p, li, span, small {
   color: #D1D5DB !important; 
 }
 
-/* Clear definitions for highlighted keywords */
 strong, b {
-  color: #39FF14 !important; /* Acid Green emphasis */
+  color: var(--color-accent) !important;
 }
 
-/* 🍊 Main Identity Title: Glowing Tactical Orange */
 h1 {
-  color: #FF6B00 !important;
-  text-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+  color: var(--color-highlight) !important;
+  text-shadow: 0 0 15px var(--color-highlight);
   font-weight: 800;
   letter-spacing: 0.05em;
+  transition: color 0.35s ease, text-shadow 0.35s ease;
 }
 
-/* 🍏 Component Titles: Neon Acid Green Alert Lines */
 h2 {
-  color: #39FF14 !important;
-  text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+  color: var(--color-accent) !important;
+  text-shadow: 0 0 10px var(--glow-shadow);
   font-weight: 700;
-  border-bottom: 2px solid #7C3AED !important; /* Grounded Purple Support Rail */
+  border-bottom: 2px solid var(--color-card) !important;
   padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
   text-transform: uppercase;
+  transition: color 0.35s ease;
 }
 
-/* 💜 Inner Component Headers */
 h3, h4 {
-  color: #A78BFA !important;
-  font-weight: 600;
+  color: var(--color-subtext) !important;
+  transition: color 0.35s ease;
 }
 
-/* 📟 Terminal Boxes and Card Content Blocks */
 pre, code, [class*="terminal"], .bg-eva-card {
-  background-color: #130B24 !important;
-  border: 1px solid #7C3AED !important; /* Purple Structural Outlines */
-  box-shadow: 0 0 15px rgba(124, 58, 237, 0.2);
+  background-color: var(--color-card) !important;
+  border: 1px solid var(--color-accent) !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.35s ease;
 }
 
-/* ==========================================================================
-   ⚡ TACTICAL HOVER MODIFIERS & INTERACTIVE COMPONENT TAB MATRIX
-   ========================================================================== */
-
-/* Neon Interactive Interface Buttons */
-.tab-trigger {
-  background-color: #130B24;
-  border: 1px solid rgba(124, 58, 237, 0.4);
-  color: #A1A1AA;
-  cursor: pointer;
-  font-family: "Share Tech Mono", "Courier New", monospace;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  text-transform: uppercase;
-}
-
-/* Hovering Glow Interaction state */
-.tab-trigger:hover {
-  color: #39FF14 !important;
-  border-color: #39FF14 !important;
-  box-shadow: 0 0 12px rgba(57, 255, 20, 0.3);
-  transform: translateY(-1px);
-}
-
-/* Synchronized Active Tab Highlight */
+/* Dynamic Active Tab Interactions */
 .tab-trigger.active {
-  color: #090514 !important;
-  background-color: #39FF14 !important;
-  border-color: #39FF14 !important;
-  box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
-  font-weight: bold;
+  color: var(--color-bg) !important;
+  background-color: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 15px var(--glow-shadow);
 }
 
-/* Card Hover Enhancements */
-.bg-eva-card {
-  transition: all 0.3s ease;
-}
-
+/* Custom Card Hover Highlight Vectors */
 .bg-eva-card:hover {
-  border-color: #39FF14 !important;
-  box-shadow: 0 0 20px rgba(57, 255, 20, 0.2) !important;
-  transform: scale(1.01);
+  border-color: var(--color-highlight) !important;
+  box-shadow: 0 0 20px var(--glow-shadow) !important;
 }
 
-/* Smooth display transitions for hidden blocks */
-.tab-content {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.4s ease-in-out;
-}
-
-.tab-content.active {
-  display: block;
-  opacity: 1;
+/* 🚨 REVEAL NERV LOGO INFRASTRUCTURE ON ATTRIBUTE ACTIVE */
+[data-theme="nerv"] .nerv-slogan-container {
+  display: block !important;
+  color: var(--color-highlight);
+  text-shadow: 0 0 8px rgba(255, 85, 0, 0.3);
+  animation: pulse 3s infinite alternate;
 }

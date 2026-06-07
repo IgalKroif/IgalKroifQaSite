@@ -1,10 +1,15 @@
 ---
 ---
 <header class="text-center my-12">
-  <h1 class="text-4xl md:text-5xl font-extrabold uppercase mb-2">Igal Kroif</h1>
-  <p class="text-eva1-purple-glow font-mono tracking-widest uppercase text-sm mb-6">
-    QA Engineer | Automation Specialist
+  <h1 class="text-4xl md:text-5xl font-extrabold uppercase mb-2">Igal Kroif</h1> <!-- -->
+  <p class="text-eva1-purple-glow font-mono tracking-widest uppercase text-sm mb-3">
+    QA Engineer | Automation Specialist <!-- -->
   </p>
+
+  <!-- 🚨 NERV EXCLUSIVE SUB-TEXT MAINSTRATE PROTOCOL -->
+  <div class="nerv-slogan-container text-xs md:text-sm tracking-widest uppercase mb-6 font-serif italic hidden">
+    "God's in his heaven. All's right in the world."
+  </div>
 
   <!-- 📟 THE TERMINAL CORE -->
   <div class="max-w-xl mx-auto p-6 rounded bg-eva-card border border-eva1-purple/50 shadow-lg relative overflow-hidden font-mono text-left min-h-[160px]">
@@ -14,12 +19,13 @@
     </div>
     
     <div id="terminal-screen" class="space-y-2 text-eva1-green">
-      <!-- Lines injected dynamically by system initialization script below -->
+      <!-- Lines injected dynamically by system initialization script -->
     </div>
   </div>
 </header>
 
 <script>
+  // Keep your existing typewriter logic here completely untouched!
   const logSequence = [
     "Initializing terminal...",
     "Loading stack core sync...",
@@ -35,45 +41,33 @@
 
   function typeLogLine() {
     if (!screen || lineIndex >= logSequence.length) return;
-
     const lineContainer = document.createElement("div");
     lineContainer.className = "flex items-start";
-    
-    // Add command line prefix arrow
     const prefix = document.createElement("span");
     prefix.className = "text-eva-orange mr-2 select-none";
     prefix.innerHTML = lineIndex === logSequence.length - 1 ? "●" : "›";
     lineContainer.appendChild(prefix);
-
     const textNode = document.createElement("span");
-    // Special accent color for the final ready state flag
     if (lineIndex === logSequence.length - 1) {
       textNode.className = "text-eva-orange font-bold animate-pulse";
     } else if (lineIndex === 2) {
       textNode.className = "text-eva-white";
     }
-    
     lineContainer.appendChild(textNode);
     screen.appendChild(lineContainer);
-
     let charIndex = 0;
     const currentText = logSequence[lineIndex];
-
     function typeChar() {
       if (charIndex < currentText.length) {
         textNode.textContent += currentText.charAt(charIndex);
         charIndex++;
-        setTimeout(typeChar, 15); // Character generation delay
+        setTimeout(typeChar, 15);
       } else {
         lineIndex++;
-        // Delay interval between separate log dumps
         setTimeout(typeLogLine, 350);
       }
     }
-
     typeChar();
   }
-
-  // Engage boot sequence parameters on document ready
   document.addEventListener("DOMContentLoaded", typeLogLine);
 </script>

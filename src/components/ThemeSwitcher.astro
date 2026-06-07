@@ -1,0 +1,39 @@
+---
+const themes = [
+  { id: "eva-01", name: "EVA-01", color: "border-[#39FF14] text-[#39FF14]" },
+  { id: "eva-00", name: "EVA-00", color: "border-[#FFB800] text-[#FFB800]" },
+  { id: "eva-02", name: "EVA-02", color: "border-[#FF1E27] text-[#FF1E27]" },
+  { id: "nerv", name: "NERV HQ", color: "border-[#E50000] text-[#E50000]" }
+];
+---
+
+<div class="max-w-xl mx-auto p-3 rounded bg-black/40 border border-white/10 flex flex-wrap justify-center gap-2 font-mono text-xs">
+  <span class="text-white/40 self-center uppercase tracking-widest mr-2 text-[10px]">SYSTEM PROFILE:</span>
+  {themes.map((theme) => (
+    <button
+      class={`theme-selector px-3 py-1 rounded border bg-transparent cursor-pointer transition-all duration-200 uppercase font-bold tracking-wider hover:scale-105 active:scale-95 ${theme.color}`}
+      data-theme-id={theme.id}
+    >
+      [{theme.name}]
+    </button>
+  ))}
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('.theme-selector');
+
+  // Load configuration value if saved in baseline registry cache
+  const activeTheme = localStorage.getItem('nerv-user-theme') || 'eva-01';
+  document.documentElement.setAttribute('data-theme', activeTheme);
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetTheme = button.getAttribute('data-theme-id');
+      if (targetTheme) {
+        // Shift global structural variables immediately
+        document.documentElement.setAttribute('data-theme', targetTheme);
+        localStorage.setItem('nerv-user-theme', targetTheme);
+      }
+    });
+  });
+</script>

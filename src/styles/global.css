@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   🧬 UNIVERSAL NERV TACTICAL THEME MATRIX
+   🧬 UNIVERSAL NERV TACTICAL THEME MATRIX (PERMUTATION PROOF)
    ========================================================================== */
 
-/* 1. NERV HEADQUARTERS DEFAULT MODE */
+/* 1. NERV HEADQUARTERS DEFAULT PROFILE */
 :root, 
-[data-theme="nerv"], 
-.theme-nerv, 
-.nerv {
+[data-theme="nerv"], [data-theme="nerv-hq"], [data-theme="nerv_hq"],
+.theme-nerv, .theme-nerv-hq, .nerv, .nerv-hq {
   --color-bg: #080808;
   --color-accent: #e63946;
   --color-highlight: #ffb703;
@@ -17,10 +16,9 @@
   --bg-wallpaper: url('/wallpapers/nerv.jpg');
 }
 
-/* 2. EVA-01 INITIAL PROTOCOL MODE */
-[data-theme="eva01"], 
-.theme-eva01, 
-.eva01 {
+/* 2. EVA-01 INITIAL PROTOCOL PROFILE */
+[data-theme="eva01"], [data-theme="eva-01"], [data-theme="eva_01"],
+.theme-eva01, .theme-eva-01, .eva01, .eva-01 {
   --color-bg: #090514;
   --color-accent: #b5179e;
   --color-highlight: #72efdd;
@@ -29,16 +27,26 @@
   --bg-wallpaper: url('/wallpapers/eva01.jpg');
 }
 
-/* 3. EVA-02 ASUKA BERSERK MODE */
-[data-theme="eva02"], 
-.theme-eva02, 
-.eva02 {
+/* 3. EVA-02 ASUKA BERSERK PROFILE */
+[data-theme="eva02"], [data-theme="eva-02"], [data-theme="eva_02"],
+.theme-eva02, .theme-eva-02, .eva02, .eva-02 {
   --color-bg: #140202;
   --color-accent: #ff002b;
   --color-highlight: #ffb703;
   --color-subtext: #ba181b;
   --glow-shadow: rgba(255, 0, 43, 0.25);
   --bg-wallpaper: url('/wallpapers/eva02.jpg');
+}
+
+/* 4. EVA-00 PROTOTYPE AMBER PROFILE (DEFENSIVE DEFECT SHIELD) */
+[data-theme="eva00"], [data-theme="eva-00"], [data-theme="eva_00"],
+.theme-eva00, .theme-eva-00, .eva00, .eva-00 {
+  --color-bg: #0b0d10;
+  --color-accent: #f39c12;
+  --color-highlight: #22a6b3;
+  --color-subtext: #7f8c8d;
+  --glow-shadow: rgba(243, 156, 18, 0.25);
+  --bg-wallpaper: url('/wallpapers/nerv.jpg'); /* Uses NERV core default fallback */
 }
 
 /* ==========================================================================

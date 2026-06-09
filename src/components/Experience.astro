@@ -1,64 +1,145 @@
 ---
-import TestRunner from './TestRunner.astro';
+const experiences = [
+  {
+    role: "QA Engineer / Automation Specialist",
+    company: "Tesnet Group Ltd",
+    type: "Full-time",
+    duration: "MAY 2023 – PRESENT",
+    location: "TEL AVIV (HYBRID)",
+    points: [
+      "Architected and scaled robust, end-to-end API test automation frameworks from scratch using Java and RestAssured.",
+      "Configured comprehensive automation suites driven by JUnit and TestNG to safeguard core banking backend stability.",
+      "Engineered custom browser extensions and tailored workflow optimization software, significantly increasing cross-team operational speeds.",
+      "Pioneered cutting-edge testing methodologies by implementing Kiro usage integrated with AI engines to streamline test generation."
+    ]
+  },
+  {
+    role: "Manual Engineering Specialist",
+    company: "Qualitest",
+    type: "Full-time",
+    duration: "FEB 2022 – MAY 2023",
+    location: "TEL AVIV DISTRICT",
+    points: [
+      "Served as a core Manual Engineering Specialist, authoring high-coverage functional, integration, and regression test specifications.",
+      "Leveraged deep exploratory testing principles alongside Teradata SQL data mapping models to validate sophisticated system integrations.",
+      "Deconstructed complex software requirements into concrete structural designs, uncovering critical software defects."
+    ]
+  }
+];
 ---
 
-<div class="space-y-8 font-mono">
-  <div>
-    <h2 class="text-xl font-bold tracking-widest text-[var(--color-accent)] uppercase mb-1">
-      📂 NERV TACTICAL OPERATION LOGS
-    </h2>
-    <p class="text-xs text-white/50">ACCESS LEVEL: SYSTEM ADMINISTRATOR REQUIRED</p>
+<div class="font-mono w-full max-w-2xl mx-auto relative group mt-4" id="experience-carousel">
+  
+  <button id="prev-exp" class="absolute -left-16 top-[60%] -translate-y-1/2 z-30 bg-black/90 border border-[var(--color-highlight)] text-[var(--color-highlight)] w-12 h-20 flex items-center justify-center rounded text-2xl transition-all duration-300 cursor-pointer shadow-[0_0_15px_rgba(var(--color-highlight-rgb),0.3)] hover:bg-[var(--color-highlight)] hover:text-black">
+    ←
+  </button>
+  <button id="next-exp" class="absolute -right-16 top-[60%] -translate-y-1/2 z-30 bg-black/90 border border-[var(--color-highlight)] text-[var(--color-highlight)] w-12 h-20 flex items-center justify-center rounded text-2xl transition-all duration-300 cursor-pointer shadow-[0_0_15px_rgba(var(--color-highlight-rgb),0.3)] hover:bg-[var(--color-highlight)] hover:text-black">
+    →
+  </button>
+
+  <div class="border-b border-[var(--color-highlight)]/20 pb-4 mb-4 flex flex-col justify-start items-start gap-2 w-full">
+    <span class="text-xs tracking-widest text-[var(--color-highlight)] break-words w-full">[ NERV TACTICAL OPERATION LOGS ]</span>
+    <span class="text-[8px] opacity-60 bg-black/40 px-1.5 py-0.5 border border-white/10 rounded self-start">ACCESS LEVEL: SYSTEM ADMINISTRATOR REQUIRED</span>
   </div>
 
-  <!-- DEPLOYMENT RECORD 1 -->
-  <div class="border-l-2 border-[var(--color-accent)] pl-4 ml-2 space-y-3 relative">
-    <div class="absolute w-3 h-3 bg-[var(--color-bg)] border-2 border-[var(--color-accent)] rounded-full -left-[7px] top-1"></div>
-    
-    <div class="flex flex-col md:flex-row md:justify-between md:items-baseline border-b border-white/5 pb-1">
-      <div>
-        <h3 class="text-md font-bold text-[var(--color-highlight)] uppercase tracking-wide">
-          OPERATION: CORE FINANCIAL FRAMEWORK STABILIZATION
-        </h3>
-        <span class="text-sm text-white font-bold">Tesnet Group Ltd • Full-time</span>
-      </div>
-      <div class="text-xs text-[var(--color-subtext)] font-semibold mt-1 md:mt-0">
-        MAY 2023 — PRESENT › TEL AVIV (HYBRID)
-      </div>
-    </div>
+  <div class="relative overflow-hidden min-h-[380px] px-2">
+    {experiences.map((exp, index) => (
+      <div 
+        class="exp-slide absolute top-0 left-0 w-full transition-all duration-500 ease-in-out" 
+        data-index={index}
+      >
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
+          <div>
+            <h3 class="text-xs md:text-sm font-bold tracking-wide text-[var(--color-highlight)]">
+              OPERATION: {exp.role.toUpperCase()}
+            </h3>
+            <p class="text-[11px] text-white/70 mt-1">
+              {exp.company} • {exp.type}
+            </p>
+          </div>
+          <div class="text-right text-[9px] text-[var(--color-highlight)] border border-[var(--color-highlight)]/30 bg-black/60 px-2 py-1 rounded shrink-0">
+            <div>{exp.duration}</div>
+            <div>{exp.location}</div>
+          </div>
+        </div>
 
-    <ul class="space-y-2 text-sm text-white/80">
-      <li>Architected and scaled robust, end-to-end API test automation frameworks from scratch using Java and RestAssured.</li>
-      <li>Configured comprehensive automation suites driven by JUnit and TestNG to safeguard core banking backend stability.</li>
-      <li>Engineered custom browser extensions and tailored workflow optimization software, significantly increasing cross-team operational speeds and testing efficiency for QA engineers.</li>
-      <li>Pioneered cutting-edge testing methodologies by implementing Kiro usage integrated with AI engines to streamline test generation and script maintenance.</li>
-    </ul>
-  </div>
-
-  <!-- DEPLOYMENT RECORD 2 -->
-  <div class="border-l-2 border-white/20 pl-4 ml-2 space-y-3 relative">
-    <div class="absolute w-3 h-3 bg-[var(--color-bg)] border-2 border-white/20 rounded-full -left-[7px] top-1"></div>
-    
-    <div class="flex flex-col md:flex-row md:justify-between md:items-baseline border-b border-white/5 pb-1">
-      <div>
-        <h3 class="text-md font-bold text-white/50 uppercase tracking-wide">
-          OPERATION: INTEGRATED BANKING DATASET VALIDATION
-        </h3>
-        <span class="text-sm text-white/70 font-bold">Qualitest • Full-time</span>
+        <ul class="space-y-3 text-[11px] text-white/60 pl-4 border-l border-[var(--color-highlight)]/40 list-disc">
+          {exp.points.map(point => (
+            <li class="leading-relaxed">{point}</li>
+          ))}
+        </ul>
       </div>
-      <div class="text-xs text-[var(--color-subtext)] opacity-60 mt-1 md:mt-0">
-        FEB 2022 — MAY 2023 › TEL AVIV DISTRICT
-      </div>
-    </div>
-
-    <ul class="space-y-2 text-sm text-white/60">
-      <li>Served as a core Manual Engineering Specialist, authoring high-coverage functional, integration, and regression test specifications for enterprise banking layers.</li>
-      <li>Leveraged deep exploratory testing principles alongside Teradata SQL data mapping models to validate sophisticated system integrations and database states.</li>
-      <li>Deconstructed complex software requirements into concrete structural designs, uncovering critical software defects ahead of aggressive deployment dates.</li>
-    </ul>
-  </div>
-
-  <!-- 🧪 INTERACTIVE AUTOMATION TESTING SIMULATOR INTEGRATION -->
-  <div class="pt-4">
-    <TestRunner />
+    ))}
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.exp-slide');
+    const prevBtn = document.getElementById('prev-exp') as HTMLElement | null;
+    const nextBtn = document.getElementById('next-exp') as HTMLElement | null;
+    
+    let currentIndex = 0;
+
+    function updateSlides() {
+      slides.forEach((slide) => {
+        const slideIndex = parseInt((slide as HTMLElement).dataset.index || '0');
+        if (slideIndex === currentIndex) {
+          (slide as HTMLElement).style.opacity = '1';
+          (slide as HTMLElement).style.transform = 'translateX(0)';
+          (slide as HTMLElement).style.position = 'relative';
+          (slide as HTMLElement).style.zIndex = '10';
+        } else {
+          (slide as HTMLElement).style.opacity = '0';
+          (slide as HTMLElement).style.transform = slideIndex < currentIndex ? 'translateX(-20px)' : 'translateX(20px)';
+          (slide as HTMLElement).style.position = 'absolute';
+          (slide as HTMLElement).style.zIndex = '0';
+        }
+      });
+
+      // Disable/Hide Previous Arrow at the start
+      if (prevBtn) {
+        if (currentIndex === 0) {
+          prevBtn.style.opacity = '0';
+          prevBtn.style.pointerEvents = 'none';
+          prevBtn.style.cursor = 'default';
+        } else {
+          prevBtn.style.opacity = '1';
+          prevBtn.style.pointerEvents = 'auto';
+          prevBtn.style.cursor = 'pointer';
+        }
+      }
+
+      // Disable/Hide Next Arrow at the end
+      if (nextBtn) {
+        if (currentIndex === slides.length - 1) {
+          nextBtn.style.opacity = '0';
+          nextBtn.style.pointerEvents = 'none';
+          nextBtn.style.cursor = 'default';
+        } else {
+          nextBtn.style.opacity = '1';
+          nextBtn.style.pointerEvents = 'auto';
+          nextBtn.style.cursor = 'pointer';
+        }
+      }
+    }
+
+    if(slides.length > 0) {
+        updateSlides();
+    }
+
+    prevBtn?.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSlides();
+      }
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      if (currentIndex < slides.length - 1) {
+        currentIndex++;
+        updateSlides();
+      }
+    });
+  });
+</script>

@@ -38,20 +38,23 @@ import LclGauge from '../components/LclGauge.astro';
       <LaunchTelemetry />
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 max-w-3xl mx-auto font-mono text-center">
-      <button class="tab-trigger active px-3 py-2 text-xs md:text-sm rounded tracking-wider" data-target="about-pane">
-        [ ABOUT ME ]
-      </button>
-      <button class="tab-trigger px-3 py-2 text-xs md:text-sm rounded tracking-wider" data-target="experience-pane">
-        [ EXPERIENCE ]
-      </button>
-      <button class="tab-trigger px-3 py-2 text-xs md:text-sm rounded tracking-wider" data-target="skills-pane">
-        [ SKILLSETS ]
-      </button>
-      <button class="tab-trigger px-3 py-2 text-xs md:text-sm rounded tracking-wider" data-target="connect-pane">
-        [ CONNECT ]
-      </button>
-    </div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-1 md:gap-2 max-w-3xl mx-auto font-mono text-center">
+  <button class="tab-trigger active px-2 py-2 text-[10px] md:text-xs rounded tracking-wider" data-target="about-pane">
+    [ ABOUT ME ]
+  </button>
+  <button class="tab-trigger px-2 py-2 text-[10px] md:text-xs rounded tracking-wider" data-target="experience-pane">
+    [ EXPERIENCE ]
+  </button>
+  <button class="tab-trigger px-2 py-2 text-[10px] md:text-xs rounded tracking-wider" data-target="skills-pane">
+    [ SKILLSETS ]
+  </button>
+  <button class="tab-trigger px-3 py-2 md:text-sm rounded tracking-wider" data-target="courses-pane">
+  [ COMPLETED COURSES ]
+</button>
+  <button class="tab-trigger px-2 py-2 text-[10px] md:text-xs rounded tracking-wider" data-target="connect-pane">
+    [ CONNECT ]
+  </button>
+</div>
 
     <hr class="border-t border-white/10 max-w-3xl mx-auto my-4" />
 
@@ -93,7 +96,7 @@ import LclGauge from '../components/LclGauge.astro';
   const contents = document.querySelectorAll('.tab-content');
 
   function applyTerminalStream(container: HTMLElement) {
-    const printableLines = container.querySelectorAll('h2, h3, p, li, .bg-eva-card, .magi-node, option');
+    const printableLines = container.querySelectorAll('h2, h3, p, li, span, a, .bg-eva-card, .magi-node, option');
     printableLines.forEach((line, index) => {
       (line as HTMLElement).style.animationDelay = `${index * 0.05}s`;
     });
@@ -115,7 +118,7 @@ import LclGauge from '../components/LclGauge.astro';
       triggers.forEach(t => t.classList.remove('active'));
       contents.forEach(c => {
         c.classList.remove('active');
-        const oldLines = c.querySelectorAll('h2, h3, p, li, .bg-eva-card, .magi-node, option');
+        const oldLines = c.querySelectorAll('h2, h3, p, li, span, a, .bg-eva-card, .magi-node, option');
         oldLines.forEach(line => (line as HTMLElement).style.removeProperty('animation-delay'));
       });
 

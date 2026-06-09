@@ -9,6 +9,7 @@
 [data-theme="nerv"], [data-theme="nerv-hq"], [data-theme="nerv_hq"],
 .theme-nerv, .theme-nerv-hq, .nerv, .nerv-hq {
   --color-bg: #080808;
+  --color-card: #120c0c;
   --color-accent: #e63946;
   --color-highlight: #ffb703;
   --color-subtext: #8d99ae;
@@ -20,6 +21,7 @@
 [data-theme="eva01"], [data-theme="eva-01"], [data-theme="eva_01"],
 .theme-eva01, .theme-eva-01, .eva01, .eva-01 {
   --color-bg: #090514;
+  --color-card: #140b22;
   --color-accent: #b5179e;
   --color-highlight: #72efdd;
   --color-subtext: #70e000;
@@ -31,6 +33,7 @@
 [data-theme="eva02"], [data-theme="eva-02"], [data-theme="eva_02"],
 .theme-eva02, .theme-eva-02, .eva02, .eva-02 {
   --color-bg: #140202;
+  --color-card: #220505;
   --color-accent: #ff002b;
   --color-highlight: #ffb703;
   --color-subtext: #ba181b;
@@ -42,6 +45,7 @@
 [data-theme="eva00"], [data-theme="eva-00"], [data-theme="eva_00"],
 .theme-eva00, .theme-eva-00, .eva00, .eva-00 {
   --color-bg: #0b0d10;
+  --color-card: #13171c;
   --color-accent: #f39c12;
   --color-highlight: #22a6b3;
   --color-subtext: #7f8c8d;
@@ -61,21 +65,15 @@ body {
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  color: #f8f9fa;
-  transition: background-color 0.5s ease, background-image 0.5s ease, border-color 0.3s ease;
+  color: #F9FAFB;
+  font-family: "Share Tech Mono", "Courier New", monospace;
+  transition: background-color 0.5s ease, background-image 0.5s ease, border-color 0.3s ease, color 0.35s ease;
+  font-size: 1.1rem; /* 📏 Global core scaling update */
 }
 
 /* ==========================================================================
    🛠️ SYSTEM INTEGRATION & COMPONENT MAPS
    ========================================================================== */
-
-body {
-  background-color: var(--color-bg) !important;
-  color: #F9FAFB !important;
-  font-family: "Share Tech Mono", "Courier New", monospace;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 1.1rem; /* 📏 Global core scaling update */
-}
 
 /* 📟 TERMINAL-STYLE PROMPT LINE INJECTIONS FOR BODY COPY */
 p {

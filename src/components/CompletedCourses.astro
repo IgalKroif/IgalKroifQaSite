@@ -1,0 +1,100 @@
+---
+/* COMPLETED TRAINING MODULE & CERTIFICATIONS ARCHIVE */
+const courses = [
+  {
+    title: "70-461, 761: Querying Microsoft SQL Server with Transact-SQL",
+    platform: "Udemy",
+    desc: "Validation training querying Microsoft SQL Server with Transact-SQL. Completed April 30, 2022.",
+    certUrl: "https://ude.my/UC-98049803-9c3b-4a08-aac7-0782ae78212f"
+  },
+  {
+    title: "Excel Essentials for the Real World (Complete Excel Course)",
+    platform: "Udemy",
+    desc: "Comprehensive spreadsheet and data management essentials. Completed March 19, 2022.",
+    certUrl: "https://ude.my/UC-587208fc-cbbd-4b49-9423-8ac59094e25b"
+  },
+  {
+    title: "ISTQB Foundation Level Quiz!",
+    platform: "ProProfs",
+    desc: "Foundational software testing knowledge assessment. Score: 100/100. Completed July 11, 2021.",
+    certUrl: "#"
+  },
+  {
+    title: "Introduction to Computer Networks for Non-Techies",
+    platform: "Udemy",
+    desc: "Fundamental networking concepts for technical and non-technical pipelines. Completed May 14, 2022.",
+    certUrl: "https://ude.my/UC-0df8f3e9-5c25-4008-964b-96e90f20833b"
+  },
+  {
+    title: "Master Software Testing+Jira+Agile on Live App",
+    platform: "Udemy",
+    desc: "Practical application of Jira, Agile methodologies, and software testing. Completed February 12, 2022.",
+    certUrl: "https://ude.my/UC-ab72ec4c-913f-4f90-a898-079d8a8ccf1e"
+  },
+  {
+    title: "Complete MongoDB Administration Guide",
+    platform: "Udemy",
+    desc: "NoSQL database management, administration, and scaling pipelines. Completed February 26, 2022.",
+    certUrl: "https://ude.my/UC-0ac8affa-bb02-403f-a4cb-38b2a26eaddc"
+  },
+  {
+    title: "POSTMAN API Testing - Step by Step for Beginners",
+    platform: "Udemy",
+    desc: "API testing fundamentals and automation sequences via Postman. Completed February 13, 2022.",
+    certUrl: "https://ude.my/UC-2a06c934-df99-4b22-b98e-e400097a5aa1"
+  },
+  {
+    title: "Python Complete Masterclass for Beginners",
+    platform: "Udemy",
+    desc: "Core programming and scripting logic in Python. Completed August 5, 2022.",
+    certUrl: "https://ude.my/UC-ef107d27-b646-439f-85d7-b7988119ff5f"
+  },
+  {
+    title: "REST APIs with Postman for Absolute Beginners",
+    platform: "Udemy",
+    desc: "Introductory curriculum mapping REST API assertions and requests. Completed April 1, 2022.",
+    certUrl: "https://ude.my/UC-b0e6a6db-d3cf-4853-9bd1-e47188e0fde5"
+  },
+  {
+    title: "The Complete Splunk Beginner Course 2022",
+    platform: "Udemy",
+    desc: "Log analysis, operational intelligence, and SIEM monitoring pipelines. Completed March 5, 2022.",
+    certUrl: "https://ude.my/UC-7765bce0-25cb-4edd-b4b3-a436388d094b"
+  },
+  {
+    title: "Automated Framework Architecture (Selenium & TestNG)",
+    platform: "Internal Qualification",
+    desc: "Comprehensive study balancing multi-threaded driver configuration modules and functional regression suites.",
+    certUrl: "#"
+  }
+];
+---
+
+<div class="space-y-4 font-mono">
+  <h2 class="text-xs font-bold tracking-widest opacity-80">[ COMPLETED COURSES ]</h2>
+  <p class="text-[11px] opacity-60">Technical upskilling and certification verification paths to maintain system balance across engineering pipelines.</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {courses.map(course => (
+      <div class="bg-eva-card border border-white/10 rounded p-4 flex flex-col justify-between group transition-all duration-300 hover:border-white/20">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xs font-bold text-[#00e5ff] tracking-wide group-hover:text-white transition-colors">
+              {course.title}
+            </h3>
+            <span class="text-[9px] px-2 py-0.5 rounded border border-white/10 bg-black/40 text-white/50 whitespace-nowrap">
+              {course.platform}
+            </span>
+          </div>
+          <p class="text-[11px] text-white/60 mb-4 leading-relaxed">
+            {course.desc}
+          </p>
+        </div>
+
+        <a href={course.certUrl} target="_blank" class="text-[9px] border border-white/20 text-white/50 py-1.5 px-3 rounded text-center hover:bg-white/10 hover:text-white transition-all tracking-wider self-start">
+          [ VERIFY CERTIFICATION ]
+        </a>
+      </div>
+    ))}
+  </div>
+</div>

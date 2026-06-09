@@ -1,0 +1,75 @@
+---
+/* 🤖 AUTOMATED DUMMY SYSTEM AUTONOMOUS VISITOR HARNESS */
+---
+<div class="bg-black/80 border-2 border-red-600 rounded p-4 font-mono text-xs relative overflow-hidden mt-6">
+  <div class="absolute inset-0 bg-red-600/5 pointer-events-none animate-pulse"></div>
+  
+  <div class="flex justify-between items-center border-b border-red-600/30 pb-2 mb-3">
+    <span class="text-red-500 font-black tracking-widest">🛑 BERSERK DUMMY SYSTEM AUTOMATION PROTOCOL</span>
+    <button id="engage-dummy-btn" class="px-3 py-1 bg-red-600 text-black font-black tracking-widest rounded hover:bg-red-500 transition-colors shadow-[0_0_10px_rgba(220,38,38,0.5)]">
+      [ ENGAGE DUMMY SYSTEM ]
+    </button>
+  </div>
+
+  <div id="dummy-console-log" class="h-24 bg-black/90 rounded border border-red-900/50 p-2 overflow-y-auto text-[10px] text-red-400 font-mono space-y-1">
+    SYSTEM STANDBY // AUTOMATED PILOT MATRIX DISENGAGED. AWAITING MAN-IN-THE-MIDDLE IMPLANT CODE...
+  </div>
+</div>
+
+<script>
+  const engageBtn = document.getElementById('engage-dummy-btn') as HTMLButtonElement | null;
+  const logBox = document.getElementById('dummy-console-log') as HTMLDivElement | null;
+
+  const simulatedLogs = [
+    "🧬 [DUMMY INSERTED] -> COLD ROOT BYPASS INITIATED...",
+    "🚀 FORWARDING INTERCEPTOR TO DOM PATH TREE...",
+    "🤖 RUNNING EMULATED JUNIT ASSERTION BLOCK #01...",
+    "🔍 ASSERT [GET /api/v1/about-profile] -> RETURNED 200 SUCCESS STATUS [PASS]",
+    "📊 MOUNTING INTERACTIVE MATRIX TAB FOR TRANSITION EVALUATION...",
+    "🔄 EMULATING TAB CLICK EVENT -> [ROUTING TO SKILLSETS LAYER]",
+    "🔍 ASSERT [DOM_ELEMENT #skills-matrix] -> RENDER VALIDATED [PASS]",
+    "⚡ INJECTING FUZZING DATA SCHEMAS TO A.T. FIELD FIELD...",
+    "🛡️ BOUNDARY CROSS ENCOUNTERED -> INTERCEPTOR BLOCKED MALWARE THREATS [PASS]",
+    "🏁 ALL ASSERTIONS RESOLVED SUCCESSFULLY. DISENGAGING AUTONOMOUS PILOT..."
+  ];
+
+  engageBtn?.addEventListener('click', () => {
+    if (!logBox || engageBtn.disabled) return;
+    
+    engageBtn.disabled = true;
+    engageBtn.textContent = "[ INITIALIZING AUTOMATED RUN... ]";
+    logBox.innerHTML = "";
+
+    let currentLogLineIdx = 0;
+
+    function printNextLogLine() {
+      if (!logBox || !engageBtn) return;
+
+      if (currentLogLineIdx < simulatedLogs.length) {
+        const lineElement = document.createElement('div');
+        lineElement.textContent = simulatedLogs[currentLogLineIdx];
+        logBox.appendChild(lineElement);
+        logBox.scrollTop = logBox.scrollHeight;
+
+        if (currentLogLineIdx === 5) {
+          const skillsTabTrigger = document.querySelector('[data-target="skills-pane"]') as HTMLButtonElement | null;
+          skillsTabTrigger?.click();
+        }
+
+        currentLogLineIdx++;
+        setTimeout(printNextLogLine, 800);
+      } else {
+        engageBtn.disabled = false;
+        engageBtn.textContent = "[ ENGAGE DUMMY SYSTEM ]";
+        
+        const summaryNode = document.createElement('div');
+        summaryNode.className = "text-[#70e000] font-bold mt-1";
+        summaryNode.textContent = "🏆 [REGRESSION COMPLETION SUCCESS]: CORE PORTFOLIO ENGINE STABLE.";
+        logBox.appendChild(summaryNode);
+        logBox.scrollTop = logBox.scrollHeight;
+      }
+    }
+
+    printNextLogLine();
+  });
+</script>

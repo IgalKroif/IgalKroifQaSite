@@ -16,6 +16,11 @@ import LaunchTelemetry from '../components/LaunchTelemetry.astro';
 import SkillsMatrixCanvas from '../components/SkillsMatrixCanvas.astro';
 import AtFieldSandbox from '../components/AtFieldSandbox.astro';
 import ReportVault from '../components/ReportVault.astro';
+
+// 🚀 NEW SYSTEM INTEGRATIONS
+import MagiConsensus from '../components/MagiConsensus.astro';
+import DummySystem from '../components/DummySystem.astro';
+import LclGauge from '../components/LclGauge.astro';
 ---
 
 <Layout title="Igal Kroif | QA Engineer">
@@ -54,18 +59,28 @@ import ReportVault from '../components/ReportVault.astro';
       <div id="about-pane" class="tab-content active">
         <About />
         <MagiSystem />
+        <div class="mt-6">
+          <MagiConsensus />
+        </div>
       </div>
+      
       <div id="experience-pane" class="tab-content">
         <Experience />
         <ThreatTracker />
         <ReportVault />
+        <div class="mt-6">
+          <LclGauge />
+        </div>
       </div>
+      
       <div id="skills-pane" class="tab-content">
         <Skills />
         <SkillsMatrixCanvas />
         <ApiSandbox />
         <AtFieldSandbox />
+        <DummySystem />
       </div>
+      
       <div id="connect-pane" class="tab-content">
         <Connect />
       </div>
@@ -74,7 +89,6 @@ import ReportVault from '../components/ReportVault.astro';
 </Layout>
 
 <script>
-  // (Keep your existing tab-switching script down here completely untouched)
   const triggers = document.querySelectorAll('.tab-trigger');
   const contents = document.querySelectorAll('.tab-content');
 

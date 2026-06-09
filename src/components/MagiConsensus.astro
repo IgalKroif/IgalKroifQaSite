@@ -1,0 +1,100 @@
+---
+/* 🧠 MAGI TRINITY SUPERCOMPUTER STRATEGY CONSENSUS ENGINE */
+---
+<div class="bg-black/40 border border-white/10 rounded p-4 font-mono mt-6 relative">
+  <div class="text-xs text-white/30 uppercase tracking-widest mb-3 border-b border-white/10 pb-1 flex justify-between">
+    <span>🧠 MAGI TACTICAL TESTING STRATEGY ARBITRATOR</span>
+    <span id="magi-status-badge" class="text-red-500 animate-pulse">[SYSTEM RETRIEVAL READY]</span>
+  </div>
+
+  <div class="mb-4">
+    <label class="block text-[11px] text-white/60 mb-1">// SELECT FRAMEWORK EVALUATION QUERY MATRIX:</label>
+    <select id="magi-query-selector" class="w-full bg-black border border-white/20 rounded p-2 text-xs text-white focus:outline-none focus:border-[#b5179e]">
+      <option value="rest-assured">RestAssured vs Postman Collections for enterprise pipeline execution</option>
+      <option value="explicit-waits">Enforcing explicit fluent waits over standard global thread pauses</option>
+      <option value="gatling-load">Deploying Gatling framework loops to execute banking regression load tests</option>
+    </select>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-center mb-4">
+    <div class="bg-black/70 p-3 border border-white/5 rounded" id="magi-col-melchior">
+      <div class="text-xs font-bold text-orange-500">MELCHIOR-1</div>
+      <div class="text-[10px] text-white/40 mb-2">SCIENTIFIC FRAME BALANCE</div>
+      <div class="magi-vote text-sm font-black text-white mt-2">—</div>
+    </div>
+    <div class="bg-black/70 p-3 border border-white/5 rounded" id="magi-col-baltasar">
+      <div class="text-xs font-bold text-orange-500">BALTASAR-2</div>
+      <div class="text-[10px] text-white/40 mb-2">MAINTENANCE VELOCITY</div>
+      <div class="magi-vote text-sm font-black text-white mt-2">—</div>
+    </div>
+    <div class="bg-black/70 p-3 border border-white/5 rounded" id="magi-col-casper">
+      <div class="text-xs font-bold text-orange-500">CASPER-3</div>
+      <div class="text-[10px] text-white/40 mb-2">RISK BOUNDARY ANALYSIS</div>
+      <div class="magi-vote text-sm font-black text-white mt-2">—</div>
+    </div>
+  </div>
+
+  <div id="magi-consensus-banner" class="bg-white/5 border border-white/10 p-2 text-center text-xs font-black tracking-widest hidden uppercase rounded">
+    Evaluating...
+  </div>
+</div>
+
+<script>
+  function initMagi() {
+    const selector = document.getElementById('magi-query-selector') as HTMLSelectElement | null;
+    const votes = document.querySelectorAll('.magi-vote');
+    const banner = document.getElementById('magi-consensus-banner') as HTMLDivElement | null;
+
+    if (!selector || !banner) return;
+
+    const matrixMapping: Record<string, string[]> = {
+      'rest-assured': ['AGREE (SCALABLE)', 'AGREE (CLEAN PATTERNS)', 'AGREE (HIGH MAINTENANCE OVERHEAD)'],
+      'explicit-waits': ['AGREE (STABLE TIME)', 'AGREE (RESOLVES FLAKINESS)', 'REJECT (COMPLEX IMPLEMENTATION)'],
+      'gatling-load': ['AGREE (CLEAN SCALA RUN)', 'AGREE (EXCELLENT REPORTING)', 'AGREE (REQUIRES SCALE BANDWIDTH)']
+    };
+
+    function computeConsensus() {
+      const selection = selector!.value;
+      const currentVotes = matrixMapping[selection];
+
+      banner!.style.display = 'block';
+      banner!.textContent = "⚡ CONNECTING TRINITY LOGIC LOOPS...";
+      banner!.className = "bg-amber-600/20 text-amber-500 border border-amber-500/40 p-2 text-center text-xs font-black tracking-widest uppercase rounded";
+
+      votes.forEach(v => {
+        v.textContent = "⏱️";
+        v.classList.add('animate-spin');
+      });
+
+      setTimeout(() => {
+        let approvalCount = 0;
+        votes.forEach((v, idx) => {
+          v.classList.remove('animate-spin');
+          const voteStr = currentVotes[idx];
+          v.textContent = voteStr;
+          
+          if (voteStr.includes('AGREE')) {
+            v.className = "magi-vote text-xs font-black text-[#70e000] mt-2";
+            approvalCount++;
+          } else {
+            v.className = "magi-vote text-xs font-black text-red-500 mt-2 animate-pulse";
+          }
+        });
+
+        if (approvalCount === 3) {
+          banner!.textContent = "🏆 [MAGI EXCLUSIVITY: UNANIMOUS CONSENSUS SECURED]";
+          banner!.className = "bg-[#70e000]/20 text-[#70e000] border border-[#70e000]/40 p-2 text-center text-xs font-black tracking-widest uppercase rounded";
+        } else {
+          banner!.textContent = "⚠️ [MAGI OVERRIDE REQ: SPLIT 2-1 DECISION REQUIRING QA OVERRIDE]";
+          banner!.className = "bg-orange-600/20 text-orange-500 border border-orange-500/40 p-2 text-center text-xs font-black tracking-widest uppercase rounded";
+        }
+      }, 900);
+    }
+
+    selector.addEventListener('change', computeConsensus);
+    // Trigger baseline evaluation computation loop on initial view attachment
+    setTimeout(computeConsensus, 400);
+  }
+
+  requestAnimationFrame(initMagi);
+</script>

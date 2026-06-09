@@ -1,60 +1,77 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ThemeSwitcher from '../components/ThemeSwitcher.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Experience from '../components/Experience.astro';
-import Skills from '../components/Skills.astro';
-import Connect from '../components/Connect.astro';
-import MagiSystem from '../components/MagiSystem.astro';
-import ApiSandbox from '../components/ApiSandbox.astro';
-import ThreatTracker from '../components/ThreatTracker.astro';
-import EffectsController from '../components/EffectsController.astro';
+import Layout from "../layouts/Layout.astro";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Experience from "../components/Experience.astro";
+import Skills from "../components/Skills.astro";
+import Connect from "../components/Connect.astro";
+import MagiSystem from "../components/MagiSystem.astro";
+import ApiSandbox from "../components/ApiSandbox.astro";
+import ThreatTracker from "../components/ThreatTracker.astro";
+import EffectsController from "../components/EffectsController.astro";
 
 // 🔌 CORE COMPONENT SUBSYSTEM LAYERS
-import LaunchTelemetry from '../components/LaunchTelemetry.astro';
-import SkillsMatrixCanvas from '../components/SkillsMatrixCanvas.astro';
-import AtFieldSandbox from '../components/AtFieldSandbox.astro';
-import ReportVault from '../components/ReportVault.astro';
+import LaunchTelemetry from "../components/LaunchTelemetry.astro";
+import SkillsMatrixCanvas from "../components/SkillsMatrixCanvas.astro";
+import AtFieldSandbox from "../components/AtFieldSandbox.astro";
+import ReportVault from "../components/ReportVault.astro";
 
 // 🚀 NEW SYSTEM INTEGRATIONS
-import MagiConsensus from '../components/MagiConsensus.astro';
-import DummySystem from '../components/DummySystem.astro';
-import LclGauge from '../components/LclGauge.astro';
+import MagiConsensus from "../components/MagiConsensus.astro";
+import DummySystem from "../components/DummySystem.astro";
+import LclGauge from "../components/LclGauge.astro";
+import CompletedCourses from "../components/CompletedCourses.astro";
 ---
 
 <Layout title="Igal Kroif | QA Engineer">
   <main class="max-w-4xl mx-auto px-6 py-6 space-y-8 clear-both relative">
-    
     <EffectsController />
 
     <ThemeSwitcher />
 
     <div class="w-full">
-      <Hero/>
+      <Hero />
     </div>
 
     <div class="w-full">
       <LaunchTelemetry />
     </div>
 
-<div class="grid grid-cols-2 md:grid-cols-5 gap-1 md:gap-2 max-w-3xl mx-auto font-mono text-center">
-  <button class="tab-trigger active px-2 py-2 text-[10px] md:text-xs rounded tracking-wider" data-target="about-pane">
-    [ ABOUT ME ]
-  </button>
-  <button class="tab-trigger px-2 py-2 text-[10px] md:text-xs rounded tracking-wider" data-target="experience-pane">
-    [ EXPERIENCE ]
-  </button>
-  <button class="tab-trigger px-2 py-2 text-[10px] md:text-xs rounded tracking-wider" data-target="skills-pane">
-    [ SKILLSETS ]
-  </button>
-  <button class="tab-trigger px-3 py-2 md:text-sm rounded tracking-wider" data-target="courses-pane">
-  [ COMPLETED COURSES ]
-</button>
-  <button class="tab-trigger px-2 py-2 text-[10px] md:text-xs rounded tracking-wider" data-target="connect-pane">
-    [ CONNECT ]
-  </button>
-</div>
+    <div
+      class="grid grid-cols-2 md:grid-cols-5 gap-1 md:gap-2 max-w-3xl mx-auto font-mono text-center"
+    >
+      <button
+        class="tab-trigger active px-2 py-2 text-[10px] md:text-xs rounded tracking-wider"
+        data-target="about-pane"
+      >
+        [ ABOUT ME ]
+      </button>
+      <button
+        class="tab-trigger px-2 py-2 text-[10px] md:text-xs rounded tracking-wider"
+        data-target="experience-pane"
+      >
+        [ EXPERIENCE ]
+      </button>
+      <button
+        class="tab-trigger px-2 py-2 text-[10px] md:text-xs rounded tracking-wider"
+        data-target="skills-pane"
+      >
+        [ SKILLSETS ]
+      </button>
+      <button
+        class="tab-trigger px-3 py-2 md:text-sm rounded tracking-wider"
+        data-target="courses-pane"
+      >
+        [ COMPLETED COURSES ]
+      </button>
+      <button
+        class="tab-trigger px-2 py-2 text-[10px] md:text-xs rounded tracking-wider"
+        data-target="connect-pane"
+      >
+        [ CONNECT ]
+      </button>
+    </div>
 
     <hr class="border-t border-white/10 max-w-3xl mx-auto my-4" />
 
@@ -66,7 +83,7 @@ import LclGauge from '../components/LclGauge.astro';
           <MagiConsensus />
         </div>
       </div>
-      
+
       <div id="experience-pane" class="tab-content">
         <Experience />
         <ThreatTracker />
@@ -75,7 +92,7 @@ import LclGauge from '../components/LclGauge.astro';
           <LclGauge />
         </div>
       </div>
-      
+
       <div id="skills-pane" class="tab-content">
         <Skills />
         <SkillsMatrixCanvas />
@@ -83,7 +100,14 @@ import LclGauge from '../components/LclGauge.astro';
         <AtFieldSandbox />
         <DummySystem />
       </div>
-      
+
+      <div id="courses-pane" class="tab-content">
+        <CompletedCourses />
+      </div>
+      <div id="connect-pane" class="tab-content">
+        <Connect />
+      </div>
+
       <div id="connect-pane" class="tab-content">
         <Connect />
       </div>
@@ -92,38 +116,44 @@ import LclGauge from '../components/LclGauge.astro';
 </Layout>
 
 <script>
-  const triggers = document.querySelectorAll('.tab-trigger');
-  const contents = document.querySelectorAll('.tab-content');
+  const triggers = document.querySelectorAll(".tab-trigger");
+  const contents = document.querySelectorAll(".tab-content");
 
   function applyTerminalStream(container: HTMLElement) {
-    const printableLines = container.querySelectorAll('h2, h3, p, li, span, a, .bg-eva-card, .magi-node, option');
+    const printableLines = container.querySelectorAll(
+      "h2, h3, p, li, span, a, .bg-eva-card, .magi-node, option",
+    );
     printableLines.forEach((line, index) => {
       (line as HTMLElement).style.animationDelay = `${index * 0.05}s`;
     });
   }
 
-  const initialActivePanel = document.querySelector('.tab-content.active');
+  const initialActivePanel = document.querySelector(".tab-content.active");
   if (initialActivePanel) {
     applyTerminalStream(initialActivePanel as HTMLElement);
   }
 
-  triggers.forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const targetId = trigger.getAttribute('data-target');
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const targetId = trigger.getAttribute("data-target");
       if (!targetId) return;
 
       const targetContent = document.getElementById(targetId);
       if (!targetContent) return;
 
-      triggers.forEach(t => t.classList.remove('active'));
-      contents.forEach(c => {
-        c.classList.remove('active');
-        const oldLines = c.querySelectorAll('h2, h3, p, li, span, a, .bg-eva-card, .magi-node, option');
-        oldLines.forEach(line => (line as HTMLElement).style.removeProperty('animation-delay'));
+      triggers.forEach((t) => t.classList.remove("active"));
+      contents.forEach((c) => {
+        c.classList.remove("active");
+        const oldLines = c.querySelectorAll(
+          "h2, h3, p, li, span, a, .bg-eva-card, .magi-node, option",
+        );
+        oldLines.forEach((line) =>
+          (line as HTMLElement).style.removeProperty("animation-delay"),
+        );
       });
 
-      trigger.classList.add('active');
-      targetContent.classList.add('active');
+      trigger.classList.add("active");
+      targetContent.classList.add("active");
 
       applyTerminalStream(targetContent);
     });

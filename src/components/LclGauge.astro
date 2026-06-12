@@ -2,32 +2,45 @@
 /* 🩸 LCL FLUID PURITY / FLAKY TEST QUARANTINE GAUGE */
 ---
 <div class="bg-black/30 border border-white/10 rounded p-4 font-mono mt-6 relative">
-  <div class="text-xs text-white/40 uppercase tracking-widest mb-3 border-b border-white/10 pb-1 flex justify-between">
+  <div class="text-xs md:text-sm text-white/40 uppercase tracking-widest mb-3 border-b border-white/10 pb-1 flex justify-between gap-3">
     <span>🩸 LCL FLUID PURITY MONITOR (FLAKY TEST QUARANTINE)</span>
     <span class="text-orange-500 animate-pulse">[ENV: STABLE]</span>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-    <div class="flex flex-col items-center justify-center bg-black/50 p-4 rounded border border-orange-500/20 h-48 relative overflow-hidden">
-      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-orange-600/60 to-orange-400/30 transition-all duration-300 border-t border-orange-400 flex items-center justify-center" id="lcl-fluid-level" style="height: 95%;">
-        <span class="text-[10px] font-black text-black/80 tracking-widest bg-orange-200/80 px-2 py-0.5 rounded shadow" id="lcl-purity-txt">95.8% PURITY</span>
+  <div class="grid grid-cols-1 md:grid-cols-[1.15fr_1.85fr] gap-6 items-stretch">
+    <div class="space-y-2">
+      <div class="bg-black/50 p-4 rounded border border-orange-500/20 h-56 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+        <div
+          class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-orange-600/65 to-orange-400/30 transition-all duration-300 border-t border-orange-400"
+          id="lcl-fluid-level"
+          style="height: 95%;"
+        ></div>
+        <div class="absolute left-1/2 bottom-3 -translate-x-1/2 z-10">
+          <span
+            class="inline-flex items-center justify-center text-[10px] md:text-xs font-black text-black/80 tracking-widest bg-orange-200/85 px-2.5 py-1 rounded shadow whitespace-nowrap min-w-[8.5rem] text-center"
+            id="lcl-purity-txt"
+          >
+            95.8% PURITY
+          </span>
+        </div>
       </div>
-      <div class="text-[10px] text-orange-200/60 text-center mt-auto">
+      <div class="text-[10px] md:text-xs text-orange-200/60 text-center tracking-wider">
         BIOMETRIC INTERFACE CHAMBER
       </div>
     </div>
 
-    <div class="md:col-span-2 space-y-4">
+    <div class="space-y-4">
       <div>
-        <label class="block text-[10px] text-white/60 mb-1 tracking-wider">ENVIRONMENTAL NOISE / NETWORK LAG INJECTOR</label>
+        <label class="block text-xs md:text-sm text-white/60 mb-1 tracking-wider">ENVIRONMENTAL NOISE / NETWORK LAG INJECTOR</label>
         <input type="range" id="lag-slider" min="0" max="100" value="0" class="w-full accent-orange-500 bg-black/50 h-2 rounded-lg cursor-pointer appearance-none border border-white/10" />
-        <div class="flex justify-between text-[9px] text-white/30 font-mono mt-0.5">
+        <div class="flex justify-between text-[10px] md:text-xs text-white/30 font-mono mt-0.5 gap-3">
           <span>OPTIMAL LINK</span>
           <span>MAX FLAKINESS / TIMEOUT</span>
         </div>
       </div>
 
-      <div class="bg-black/60 rounded border border-orange-900/40 p-2 h-24 overflow-y-auto space-y-1.5 text-[10px] text-orange-400" id="lcl-log-stream">
+      <div class="bg-black/60 rounded border border-orange-900/40 p-4 h-32 overflow-y-auto space-y-1.5 text-xs md:text-sm text-orange-400" id="lcl-log-stream">
         <div>[LCL_MONITOR] // SYSTEM STABILITY RATED AT OPTIMUM THRESHOLD.</div>
         <div>[CONTAINMENT] // 0 FLAKY LOCATORS IDENTIFIED IN PRODUCTION RUNS.</div>
       </div>
@@ -53,15 +66,15 @@
     } else if (val < 40) {
       fluidLevel.style.height = "75%";
       purityText.textContent = "78.5% PURITY";
-      logStream.innerHTML = `<div>⚠️ [WARNING]: MILD NETWORK LATENCY DETECTED.</div><div>[LOG]: ISOLATING INTERMITTENT REST ASSURED TIMEOUTS.</div>`;
+      logStream.innerHTML = `<div>[WARNING]: MILD NETWORK LATENCY DETECTED.</div><div>[LOG]: ISOLATING INTERMITTENT REST ASSURED TIMEOUTS.</div>`;
     } else if (val < 80) {
       fluidLevel.style.height = "40%";
       purityText.textContent = "41.2% PURITY";
-      logStream.innerHTML = `<div>🚨 [CRITICAL]: FLAKY LOCATORS DETECTED IN WEB UI LAYER!</div><div>[ACTION]: DIVERTING TO TERADATA SQL CONTAINMENT CELLS.</div>`;
+      logStream.innerHTML = `<div>[CRITICAL]: FLAKY LOCATORS DETECTED IN WEB UI LAYER!</div><div>[ACTION]: DIVERTING TO TERADATA SQL CONTAINMENT CELLS.</div>`;
     } else {
       fluidLevel.style.height = "15%";
       purityText.textContent = "12.0% PURITY (CONTAMINATED)";
-      logStream.innerHTML = `<div>🔥 [BREACH]: HEAVY BOTTLENECK ENVIRONMENT CONTAMINATION!</div><div>[FATAL]: UNSTABLE TEST SUITE ISOLATED FROM MAIN PIPELINES.</div>`;
+      logStream.innerHTML = `<div>[BREACH]: HEAVY BOTTLENECK ENVIRONMENT CONTAMINATION!</div><div>[FATAL]: UNSTABLE TEST SUITE ISOLATED FROM MAIN PIPELINES.</div>`;
     }
   });
 </script>

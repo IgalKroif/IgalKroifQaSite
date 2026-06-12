@@ -31,10 +31,10 @@ const experiences = [
 <div class="font-mono w-full max-w-2xl mx-auto relative group mt-4" id="experience-carousel">
   
   <button id="prev-exp" class="absolute -left-16 top-[60%] -translate-y-1/2 z-30 bg-black/90 border border-[var(--color-highlight)] text-[var(--color-highlight)] w-12 h-20 flex items-center justify-center rounded text-2xl transition-all duration-300 cursor-pointer shadow-[0_0_15px_rgba(var(--color-highlight-rgb),0.3)] hover:bg-[var(--color-highlight)] hover:text-black">
-    ←
+    &larr;
   </button>
   <button id="next-exp" class="absolute -right-16 top-[60%] -translate-y-1/2 z-30 bg-black/90 border border-[var(--color-highlight)] text-[var(--color-highlight)] w-12 h-20 flex items-center justify-center rounded text-2xl transition-all duration-300 cursor-pointer shadow-[0_0_15px_rgba(var(--color-highlight-rgb),0.3)] hover:bg-[var(--color-highlight)] hover:text-black">
-    →
+    &rarr;
   </button>
 
   <div class="border-b border-[var(--color-highlight)]/20 pb-4 mb-4 flex flex-col justify-start items-start gap-2 w-full">
@@ -49,21 +49,21 @@ const experiences = [
         data-index={index}
       >
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
-          <div>
+          <div class="min-w-0">
             <h3 class="text-xs md:text-sm font-bold tracking-wide text-[var(--color-highlight)]">
               OPERATION: {exp.role.toUpperCase()}
             </h3>
-            <p class="text-[11px] text-white/70 mt-1">
-              {exp.company} • {exp.type}
+            <p class="text-xs md:text-sm text-white/70 mt-1">
+              {exp.company} &bull; {exp.type}
             </p>
           </div>
-          <div class="text-right text-[9px] text-[var(--color-highlight)] border border-[var(--color-highlight)]/30 bg-black/60 px-2 py-1 rounded shrink-0">
+          <div class="text-right text-xs md:text-sm leading-tight text-[var(--color-highlight)] border border-[var(--color-highlight)]/30 bg-black/60 px-3 py-2 rounded shrink-0 whitespace-nowrap">
             <div>{exp.duration}</div>
             <div>{exp.location}</div>
           </div>
         </div>
 
-        <ul class="space-y-3 text-[11px] text-white/60 pl-4 border-l border-[var(--color-highlight)]/40 list-disc">
+        <ul class="space-y-3 text-xs md:text-sm text-white/60 pl-4 border-l border-[var(--color-highlight)]/40 list-disc">
           {exp.points.map(point => (
             <li class="leading-relaxed">{point}</li>
           ))}
@@ -97,7 +97,6 @@ const experiences = [
         }
       });
 
-      // Disable/Hide Previous Arrow at the start
       if (prevBtn) {
         if (currentIndex === 0) {
           prevBtn.style.opacity = '0';
@@ -110,7 +109,6 @@ const experiences = [
         }
       }
 
-      // Disable/Hide Next Arrow at the end
       if (nextBtn) {
         if (currentIndex === slides.length - 1) {
           nextBtn.style.opacity = '0';
@@ -124,8 +122,8 @@ const experiences = [
       }
     }
 
-    if(slides.length > 0) {
-        updateSlides();
+    if (slides.length > 0) {
+      updateSlides();
     }
 
     prevBtn?.addEventListener('click', () => {
